@@ -1,0 +1,36 @@
+{
+  "name": "stage",
+  "version": "1.0.0",
+  "description": "animation",
+  "author": "alwaysonlinetxm",
+  "private": true,
+  "scripts": {
+    "start": "webpack -w --env.name index",
+    "dev": "webpack-dev-server --hot --env.name index",
+    "start_sec": "webpack -w --env.name sec",
+    "dev_sec": "webpack-dev-server --hot --env.name sec"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.7",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "postcss-loader": "^2.0.6",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.7.1",
+    "yargs": "^8.0.2"
+  },
+  "dependencies": {
+    "stage-js": "^0.8.9",
+    "whatwg-fetch": "^2.0.3"
+  }
+}
