@@ -1,33 +1,28 @@
-import Stage from 'stage-js/platform/web';
+import 'pixi.js';
 
-import Timg from './images/timg.jpeg';
+import '../libs/reset.scss';
 
-// Create new app
-Stage(function(stage) {
+import Logo from './images/logo.png';
 
-  // Set view box
-  stage.viewbox(300, 200);
+var app = new PIXI.Application(800, 600, {backgroundColor : 0x1099bb});
+document.body.appendChild(app.view);
 
-  // Create an image and append it to stage
-  var box = Stage.image('box').appendTo(stage);
+var container = new PIXI.Container();
 
-  // Align box to center
-  box.pin('align', 0.5);
+app.stage.addChild(container);
 
-  // On mouse click...
-  box.on('click', function(point) {
-    // ...tween scale values of this node
-    this.tween().ease('bounce').pin({
-      scaleX : Math.random() + 0.5,
-      scaleY : Math.random() + 0.5
-    });
-  });
-});
+var texture = PIXI.Texture.fromImage(Logo);
 
-// Adding a texture
-Stage({
-  image : Timg,
-  textures : {
-    box : { x : 0, y : 0, width : 30, height : 30 }
-  }
-});
+// Create a 5x5 grid of bunnies
+for (var i = 0; i < 25; i++) {
+    var bunny = new PIXI.Sprite(texture);
+    bunny.anchor.set(0.5);
+    bunny.x = (i % 5) * 40;
+    bunny.y = Math.floor(i / 5) * 40;
+    container.addChild(bunny);
+}
+console.log(app.renderer.width, container.width)
+console.log(app.renderer.height, container.height)
+// Center on the screen
+container.x = (app.renderer.width - container.width) / 2;
+container.y = (app.renderer.height - container.height) / 2;
