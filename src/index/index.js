@@ -1,44 +1,68 @@
 import 'pixi.js';
 
+import dashboard from './dashboard';
+
 import '../libs/reset.scss';
+import './index.scss';
 
-import Logo from './images/logo.png';
+import Bg1 from './images/bg1.png';
 
-var app = new PIXI.Application(800, 600, {backgroundColor : 0x1099bb});
+// initial whole stage
+const canvas = document.querySelector('.canvas');
+const app = new PIXI.Application(800, 600, { backgroundColor : 0xffffff, antialias: true });
 app.view.style.position = "absolute";
 app.view.style.display = "block";
 app.renderer.autoResize = true;
-app.renderer.resize(window.innerWidth, window.innerHeight);
-document.body.appendChild(app.view);
+app.renderer.resize(canvas.offsetWidth, canvas.offsetHeight);
+canvas.appendChild(app.view);
 
-var container = new PIXI.Container();
+const CLIENT_WIDTH = app.renderer.width;
+const CLIENT_HEIGHT = app.renderer.height;
+const LEFT_WIDTH = Math.floor(CLIENT_WIDTH * 0.7);
+const RIGHT_WIDTH = CLIENT_WIDTH - LEFT_WIDTH;
 
-app.stage.addChild(container);
+// // create left & right boxs
+// const leftBox = new PIXI.Container();
+// const rightBox = new PIXI.Container();
+//
+// app.stage.addChild(leftBox);
+// app.stage.addChild(rightBox);
+//
+// // initial left
+// leftBox.width = LEFT_WIDTH;
+// leftBox.height = CLIENT_HEIGHT;
+// leftBox.x = 0;
+// leftBox.y = 0;
+//
+// // initial right
+// rightBox.width = RIGHT_WIDTH;
+// rightBox.height = CLIENT_HEIGHT;
+// rightBox.x = LEFT_WIDTH;
+// rightBox.y = 0;
+//
+// // draw the backgroundColor
+// const graphics = new PIXI.Graphics();
+//
+// graphics.lineStyle(2, 0x2d3975, 1);
+// graphics.beginFill(0x2d3975, 1);
+// graphics.drawRect(0, 0, RIGHT_WIDTH, CLIENT_HEIGHT);
+//
+// rightBox.addChild(graphics);
+//
+// dashboard.sprite.x = (RIGHT_WIDTH - dashboard.width) / 2;
+// dashboard.sprite.y = CLIENT_HEIGHT * 0.1;
+//
+// rightBox.addChild(dashboard.sprite);
+//
+// app.ticker.add(function() {
+//
+// });
 
-var texture = PIXI.Texture.fromImage(Logo);
-const list = [];
+const arrow = document.querySelector('.db-arrow');
 
-// Create a 5x5 grid of bunnies
-for (var i = 0; i < 25; i++) {
-    var bunny = new PIXI.Sprite(texture);
-    // bunny.anchor.set(0.5);
-    bunny.x = (i % 5) * 40;
-    bunny.y = Math.floor(i / 5) * 40;
-    bunny.width = 10;
-    bunny.height = 10;
-    list.push(bunny);
-    container.addChild(bunny);
+function setArrow(temp) {
+  const deg = (temp - 16) * 15 - 120;
+  arrow.style.transform = `rotate(${deg}deg)`;
 }
-// Center on the screen
-// container.x = (app.renderer.width - container.width) / 2;
-container.y = (app.renderer.height - container.height) / 2;
 
-app.ticker.add(function() {
-  list.forEach((node, i) => {
-    if (node.x + 2 > app.renderer.width) {
-      node.x = 0;
-    } else {
-      node.x += 2;
-    }
-  });
-});
+setInterval(() => setArrow(Math.ceil(16 * Math.random()) + 16), 1000);

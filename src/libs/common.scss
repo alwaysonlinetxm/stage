@@ -1,0 +1,73 @@
+$size10: 1rem;
+$size12: 1.2rem;
+$size14: 1.4rem;
+$size16: 1.6rem;
+
+@mixin icon-arrow($size, $deg, $border, $color) {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	width: $size;
+	height: $size;
+	overflow: hidden;
+	-webkit-transform: rotateZ($deg);
+	transform: rotateZ($deg);
+
+	&:before,
+	&:after {
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		bottom: 0;
+		content: " ";
+		background-color: $color;
+	}
+
+	&:before {
+		width: $border;
+		height: 100%;
+	}
+
+	&:after {
+		width: 100%;
+		height: $border;
+	}
+}
+
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+@mixin mediate($height) {
+	height: $height;
+	line-height: $height;
+}
+
+@mixin gradient($start, $end) {
+    background-color: $start;
+    // background: gradient(linear, left top, left bottom, color-stop(100%, $start), color-stop(0%, $end));
+    background: linear-gradient(0deg, $start 0%, $end 100%);
+}
+
+@mixin flex($orient: horizontal, $pack: center, $align: stretch, $lines: single) {
+    display: -webkit-box;
+    -webkit-box-orient: $orient;
+    -webkit-box-pack: $pack;
+    -webkit-box-align: $align;
+		-webkit-box-lines: $lines;
+}
+
+%ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin ellipsis-multi($n: 1) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $n;
+    -webkit-box-orient: vertical;
+}

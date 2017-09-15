@@ -25,14 +25,12 @@ module.exports = function makeWebpackConfig(env) {
 	      exclude: /node_modules/,
 				use: [
           'style-loader',
-					'css-loader?modules&camelCase&importLoaders=1&localIdentName=[local]_[hash:base64:5]',
+					'css-loader',
 					{
 						loader: 'postcss-loader',
 						options: {
 							plugins: () => [
-								autoprefixer({
-									browsers: [ '> 5%', 'last 2 versions' ]
-								})
+								autoprefixer()
               ]
 						}
 					},
