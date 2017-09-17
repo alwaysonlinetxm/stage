@@ -62,22 +62,58 @@ const RIGHT_WIDTH = CLIENT_WIDTH - LEFT_WIDTH;
 const COLORS = [ 0x061e81, 0x1E1B9B, 0x1B519B, 0x237BC4, 0x58b7ee, 0xc9dae3, 0xf2f3d6, 0xedf271, 0xEDE780, 0xE5B329, 0xF7D82C, 0xf2962a, 0xf24f2a, 0xf43205, 0xDB061B, 0xA51D32, 0x8E1925 ];
 
 const particle1 = new Particle({
-  startX: 600,
-  endX: 300,
-  startY1: 200,
-  endY1: 250,
-  startY2: 250,
-  endY2: 450,
+  startX: 200,
+  endX: 0,
+  startY1: 0,
+  startY2: 20,
+  endY1: 10,
+  endY2: 50,
   sum: 200,
   color: 0xEDE780
 });
 
-window.p = particle1;
 
+particle1.particles.rotation = Math.PI * 0.03;
+particle1.particles.x = 200;
+particle1.particles.y = 300;
 app.stage.addChild(particle1.particles);
 
+const particle2= new Particle({
+  startX: 300,
+  endX: 0,
+  startY1: 0,
+  startY2: 10,
+  endY1: 10,
+  endY2: 200,
+  sum: 200,
+  color: 0xEDE780
+});
+
+particle2.particles.rotation = Math.PI * 0.1;
+particle2.particles.x = 60;
+particle2.particles.y = 100;
+app.stage.addChild(particle2.particles);
+
+const particle3= new Particle({
+  startX: 200,
+  endX: 0,
+  startY1: 0,
+  startY2: 50,
+  endY1: 50,
+  endY2: 150,
+  sum: 200,
+  color: 0xEDE780
+});
+
+window.p = particle2;
+particle3.particles.rotation = Math.PI * 0.55;
+particle3.particles.x = 600;
+app.stage.addChild(particle3.particles);
+
 app.ticker.add(function() {
-  particle1.animate()
+  particle1.animate();
+  particle2.animate();
+  particle3.animate();
 });
 
 const arrow = document.querySelector('.db-arrow');
@@ -93,4 +129,8 @@ setInterval(() => {
   setArrow(temp + 16);
   particle1.setColor(COLORS[temp], 20);
   particle1.setSum(sum, 20);
+  particle2.setColor(COLORS[temp], 20);
+  particle2.setSum(sum, 20);
+  particle3.setColor(COLORS[temp], 20);
+  particle3.setSum(sum, 20);
 }, 10000);

@@ -60,7 +60,8 @@ export default class Particle {
   }
 
   animate() {
-    const { particleList, startX, endX, startY1, startY2, endY1, endY2, x1, x2, dir, sum } = this;
+    const { particleList, startX, endX, startY1, startY2, x1, x2, dir, sum } = this;
+    let sumx = 0;
 
     for (let i = 0; i < Math.min(sum, particleList.length); i++) {
       const node = particleList[i];
@@ -68,6 +69,7 @@ export default class Particle {
       if (dir === 1 && node.x < endX || dir === -1 && node.x >= endX) {
         const { dis, k } = node;
 
+        sumx += dis;
         node.x += dis;
         node.y += dis / k;
         if (dir === 1 && node.x < x1 || dir === -1 && node.x >= x1) {
