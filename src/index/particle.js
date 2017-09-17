@@ -14,6 +14,7 @@ export default class Particle {
     this.startY2 = opt.startY2;
     this.endY2 = opt.endY2;
     this.sum = opt.sum;
+    this.color = opt.color;
     this.dir = this.startX > this.endX ? -1 : 1;
     this.x1 = this.startX + (this.endX - this.startX) * 0.3;
     this.x2 = this.startX + (this.endX - this.startX) * 0.6;
@@ -42,8 +43,20 @@ export default class Particle {
     }
   }
 
-  setColor(color) {
+  setColor(color, interval) {
+    this.color = color;
 
+    for (let i = 0; i < this.particleList.length; i++) {
+      setTimeout((i => () => {
+        const node = this.particleList[i];
+
+        node.clear();
+        node.lineStyle(0);
+        node.beginFill(color, 0.5);
+        node.drawCircle(0, 0, 1);
+        node.endFill();
+      })(i), (interval || 50) * i);
+    }
   }
 
   animate() {
@@ -73,11 +86,11 @@ export default class Particle {
   }
 
   _createParticle() {
-    const { startX, endX, startY1, startY2, endY1, endY2, dir } = this;
+    const { startX, endX, startY1, startY2, endY1, endY2, dir, color } = this;
     const particle = new PIXI.Graphics();
 
     particle.lineStyle(0);
-    particle.beginFill(0x709bf0, 0.5);
+    particle.beginFill(color, 0.5);
     particle.drawCircle(0, 0, 1);
     particle.endFill();
     particle.x = startX;

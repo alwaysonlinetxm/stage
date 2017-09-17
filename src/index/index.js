@@ -59,6 +59,8 @@ const RIGHT_WIDTH = CLIENT_WIDTH - LEFT_WIDTH;
 //
 // });
 
+const COLORS = [ 0x061e81, 0x1E1B9B, 0x1B519B, 0x237BC4, 0x58b7ee, 0xc9dae3, 0xf2f3d6, 0xedf271, 0xEDE780, 0xE5B329, 0xF7D82C, 0xf2962a, 0xf24f2a, 0xf43205, 0xDB061B, 0xA51D32, 0x8E1925 ];
+
 const particle1 = new Particle({
   startX: 600,
   endX: 300,
@@ -66,7 +68,8 @@ const particle1 = new Particle({
   endY1: 250,
   startY2: 250,
   endY2: 450,
-  sum: 200
+  sum: 200,
+  color: 0xEDE780
 });
 
 window.p = particle1;
@@ -84,4 +87,10 @@ function setArrow(temp) {
   arrow.style.transform = `rotate(${deg}deg)`;
 }
 
-setInterval(() => setArrow(Math.ceil(16 * Math.random()) + 16), 1000);
+setInterval(() => {
+  const temp = Math.ceil(16 * Math.random());
+  const sum =  100 + Math.ceil(500 * Math.random());
+  setArrow(temp + 16);
+  particle1.setColor(COLORS[temp], 20);
+  particle1.setSum(sum, 20);
+}, 10000);
