@@ -13,16 +13,18 @@ export default class Particle {
     this.endY1 = opt.endY1;
     this.startY2 = opt.startY2;
     this.endY2 = opt.endY2;
+    this.sum = opt.sum;
     this.dir = this.startX > this.endX ? -1 : 1;
     this.x1 = this.startX + (this.endX - this.startX) * 0.3;
     this.x2 = this.startX + (this.endX - this.startX) * 0.6;
 
-    this.setSum(opt.sum);
+    this.setSum(this.sum);
   }
 
   setSum(n, interval) {
     const { particles, particleList } = this;
 
+    this.sum = n;
     if (particleList.length > 0 && n <= particleList.length) {
       for (let i = n; i < particleList.length; i++) {
         setTimeout((i => () => {
@@ -45,9 +47,11 @@ export default class Particle {
   }
 
   animate() {
-    const { particles, particleList, startX, endX, startY1, startY2, endY1, endY2, x1, x2, dir } = this;
+    const { particleList, startX, endX, startY1, startY2, endY1, endY2, x1, x2, dir, sum } = this;
 
-    particleList.forEach((node, i) => {
+    for (let i = 0; i < Math.min(sum, particleList.length); i++) {
+      const node = particleList[i];
+
       if (dir === 1 && node.x < endX || dir === -1 && node.x >= endX) {
         const { dis, k } = node;
 
@@ -65,7 +69,7 @@ export default class Particle {
         node.y = startY1 + (Math.random() * (startY2 - startY1));
         node.alpha = 0;
       }
-    });
+    }
   }
 
   _createParticle() {
