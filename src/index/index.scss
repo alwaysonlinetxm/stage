@@ -10,36 +10,43 @@ html, body {
 }
 
 .canvas {
-  width: 70%;
+  width: 73%;
   height: 100%;
 }
 
 .right {
-  width: 30%;
+  width: 27%;
   height: 100%;
-  @include gradient(#2f3640, #3d434f);
+  @include gradient(#162538, #293855);
 }
 
 .dashboard {
   position: relative;
   width: 300px;
   height: 225px;
-  overflow: hidden;
-  margin: 10% auto 0;
+  margin: 30% auto 0;
+
+  @media screen and (min-width: 1680px) {
+    transform: scale(1.4);
+  }
 }
 
-.db-circle {
+.db-thermometer {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  z-index: 1;
   width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  border: 2px solid #4c5463;
+  height: 266px;
+  background: url(./images/thermometer.png) no-repeat;
+  background-size: 300px 266px;
 }
 
 .db-num {
   position: absolute;
   display: inline-block;
   color: #aaa;
-  font-size: 16px;
+  font-size: 14px;
 
   &.highlight {
     color: #fff;
@@ -150,8 +157,9 @@ html, body {
 
 .db-arrow {
   position: absolute;
-  top: 50px;
-  left: 140px;
+  z-index: 10;
+  top: 45px;
+  left: 143px;
   width: 15px;
   height: 110px;
   background: url(./images/arrow.png) no-repeat;
@@ -162,7 +170,7 @@ html, body {
 
 .db-temp {
   position: absolute;
-  top: 90%;
+  top: 92%;
   left: 50%;
   transform: translateX(-50%);
   color: #ccc;
@@ -170,36 +178,63 @@ html, body {
 }
 
 .info-list {
-  width: 180px;
+  width: 198px;
   margin: 100px auto 0;
+
+  @media screen and (min-width: 1680px) {
+    width: 315px;
+  }
 }
 
 .info {
-  line-height: 30px;
   color: #eee;
-  font-size: 18px;
+  font-size: 20px;
+  margin-top: 34px;
+
+  @media screen and (min-width: 1680px) {
+    font-size: 32px;
+    margin-top: 58px;
+  }
 
   &:before {
     content: '';
     display: inline-block;
     width: 30px;
     height: 30px;
-    margin-right: 5px;
+    margin-right: 8px;
     vertical-align: middle;
+
+    @media screen and (min-width: 1680px) {
+      width: 42px;
+      height: 42px;
+      margin-right: 16px;
+    }
   }
 
   &:nth-of-type(1):before {
-    background: url(./images/timg.jpeg) no-repeat;
+    background: url(./images/temp.png) no-repeat;
     background-size: 30px 30px;
+
+    @media screen and (min-width: 1680px) {
+      background-size: 42px 42px;
+    }
   }
 
   &:nth-of-type(2):before {
-    background: url(./images/timg.jpeg) no-repeat;
+    background: url(./images/sum.png) no-repeat;
     background-size: 30px 30px;
+
+    @media screen and (min-width: 1680px) {
+      background-size: 42px 42px;
+    }
   }
 
   &:nth-of-type(3):before {
-    background: url(./images/timg.jpeg) no-repeat;
+    background: url(./images/dir.png) no-repeat;
     background-size: 30px 30px;
+
+    @media screen and (min-width: 1680px) {
+      background-size: 42px 42px;
+    }
   }
 }

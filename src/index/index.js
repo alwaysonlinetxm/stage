@@ -19,46 +19,8 @@ canvas.appendChild(app.view);
 
 const CLIENT_WIDTH = app.renderer.width;
 const CLIENT_HEIGHT = app.renderer.height;
-const LEFT_WIDTH = Math.floor(CLIENT_WIDTH * 0.7);
+const LEFT_WIDTH = Math.floor(CLIENT_WIDTH * 0.73);
 const RIGHT_WIDTH = CLIENT_WIDTH - LEFT_WIDTH;
-
-// // create left & right boxs
-// const leftBox = new PIXI.Container();
-// const rightBox = new PIXI.Container();
-//
-// app.stage.addChild(leftBox);
-// app.stage.addChild(rightBox);
-//
-// // initial left
-// leftBox.width = LEFT_WIDTH;
-// leftBox.height = CLIENT_HEIGHT;
-// leftBox.x = 0;
-// leftBox.y = 0;
-//
-// // initial right
-// rightBox.width = RIGHT_WIDTH;
-// rightBox.height = CLIENT_HEIGHT;
-// rightBox.x = LEFT_WIDTH;
-// rightBox.y = 0;
-//
-// // draw the backgroundColor
-// const graphics = new PIXI.Graphics();
-//
-// graphics.lineStyle(2, 0x2d3975, 1);
-// graphics.beginFill(0x2d3975, 1);
-// graphics.drawRect(0, 0, RIGHT_WIDTH, CLIENT_HEIGHT);
-//
-// rightBox.addChild(graphics);
-//
-// dashboard.sprite.x = (RIGHT_WIDTH - dashboard.width) / 2;
-// dashboard.sprite.y = CLIENT_HEIGHT * 0.1;
-//
-// rightBox.addChild(dashboard.sprite);
-//
-// app.ticker.add(function() {
-//
-// });
-
 const COLORS = [ 0x061e81, 0x1E1B9B, 0x1B519B, 0x237BC4, 0x58b7ee, 0xc9dae3, 0xf2f3d6, 0xedf271, 0xEDE780, 0xE5B329, 0xF7D82C, 0xf2962a, 0xf24f2a, 0xf43205, 0xDB061B, 0xA51D32, 0x8E1925 ];
 
 const particle1 = new Particle({
@@ -71,7 +33,6 @@ const particle1 = new Particle({
   sum: 200,
   color: 0xEDE780
 });
-
 
 particle1.particles.rotation = Math.PI * 0.03;
 particle1.particles.x = 200;
@@ -117,10 +78,18 @@ app.ticker.add(function() {
 });
 
 const arrow = document.querySelector('.db-arrow');
+const nums = document.querySelectorAll('.db-num');
 
 function setArrow(temp) {
   const deg = (temp - 16) * 15 - 120;
   arrow.style.transform = `rotate(${deg}deg)`;
+  nums.forEach((node, i) => {
+    if (i === temp - 16) {
+      node.classList.add('highlight');
+    } else if (node.classList.contains('highlight')) {
+      node.classList.remove('highlight');
+    }
+  });
 }
 
 setInterval(() => {
