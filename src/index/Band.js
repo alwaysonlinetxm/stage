@@ -43,7 +43,7 @@ export default class Particle {
         node.lineStyle(1, color, 1);
         node.moveTo(node.dx * dir, Math.cbrt(node.dx) * k1);
         node.lineTo(node.dx * dir, Math.sqrt(node.dx) * k2);
-      })(i), 20 * i);
+      })(i), 10 * i);
     }
   }
 }

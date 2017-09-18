@@ -1,33 +1,47 @@
-import Stage from 'stage-js/platform/web';
+import 'pixi.js';
 
-import Timg from './images/map.jpeg';
+import Timg from './images/timg.jpeg';
 
-// Create new app
-Stage(function(stage) {
+var app = new PIXI.Application(800, 600, {backgroundColor : 0x000000});
+document.body.appendChild(app.view);
 
-  // Set view box
-  stage.viewbox(300, 200);
+// var bunny = PIXI.Sprite.fromImage(Timg)
+//
+// // center the sprite's anchor point
+// bunny.anchor.set(0.5);
+//
+// // move the sprite to the center of the screen
+// bunny.x = app.renderer.width / 2;
+// bunny.y = app.renderer.height / 2;
+//
+// app.stage.addChild(bunny);
+//
+// let colorMatrix = new PIXI.filters.ColorMatrixFilter();
+//  bunny.filters = [colorMatrix];
+//  colorMatrix.contrast(2);
 
-  // Create an image and append it to stage
-  var box = Stage.image('box').appendTo(stage);
+const box = new PIXI.Container();
 
-  // Align box to center
-  box.pin('align', 0.5);
+for (let i = 10; i < 300; i++) {
+  var graphics = new PIXI.Graphics();
 
-  // On mouse click...
-  box.on('click', function(point) {
-    // ...tween scale values of this node
-    this.tween().ease('bounce').pin({
-      scaleX : Math.random() + 0.5,
-      scaleY : Math.random() + 0.5
-    });
-  });
-});
+  // set a fill and line style
+  // graphics.beginFill(0xFF3300);
+  graphics.lineStyle(1, 0xffd900, 1);
 
-// Adding a texture
-Stage({
-  image : Timg,
-  textures : {
-    box : { x : 0, y : 0, width : 30, height : 30 }
-  }
-});
+  // draw a shape
+  // graphics.moveTo(i, Math.log2(i) / Math.log2(2));
+  // graphics.lineTo(i, Math.log2(i) / Math.log2(3));
+  graphics.moveTo(i, Math.cbrt(i) * 30);
+  graphics.lineTo(i, Math.sqrt(i) * 25);
+  graphics.alpha = (300 - i) / 300;
+  // console.log(Math.log2(i) / Math.log2(2) * 2, Math.log2(i) / Math.log2(3))
+  console.log(Math.cbrt(i), Math.sqrt(i))
+
+
+
+  box.addChild(graphics);
+}
+box.scale.set(0.5)
+
+app.stage.addChild(box)

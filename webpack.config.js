@@ -62,7 +62,7 @@ module.exports = function makeWebpackConfig(env) {
 	      dry: false
 	    }),
 			new HtmlWebpackPlugin({
-				template: './src/index.html',
+				template: `./src/${name}/index.html`,
 				filename: 'index.html',
 				minify: {
 					minifyJS: true,
