@@ -15,6 +15,7 @@ export default class Particle {
     this.endY2 = opt.endY2;
     this.sum = opt.sum;
     this.color = opt.color;
+    this.radius = 2;
     this.dir = this.startX > this.endX ? -1 : 1;
     this.x1 = this.startX + (this.endX - this.startX) * 0.3;
     this.x2 = this.startX + (this.endX - this.startX) * 0.6;
@@ -53,7 +54,7 @@ export default class Particle {
         node.clear();
         node.lineStyle(0);
         node.beginFill(color, 0.5);
-        node.drawCircle(0, 0, 1);
+        node.drawCircle(0, 0, this.radius);
         node.endFill();
       })(i), (interval || 50) * i);
     }
@@ -93,7 +94,7 @@ export default class Particle {
 
     particle.lineStyle(0);
     particle.beginFill(color, 0.5);
-    particle.drawCircle(0, 0, 1);
+    particle.drawCircle(0, 0, this.radius);
     particle.endFill();
     particle.x = startX;
     particle.y = startY1 + (Math.random() * (startY2 - startY1));

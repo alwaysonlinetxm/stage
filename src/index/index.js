@@ -1,16 +1,15 @@
 import 'pixi.js';
 
 import Particle from './Particle';
-import dashboard from './dashboard';
 
 import '../libs/reset.scss';
 import './index.scss';
 
-
+import bgImg from './images/bg.png';
 
 // initial whole stage
 const canvas = document.querySelector('.canvas');
-const app = new PIXI.Application(800, 600, { backgroundColor : 0xffffff, antialias: true });
+const app = new PIXI.Application(800, 600, { backgroundColor : 0x000000, antialias: true });
 app.view.style.position = "absolute";
 app.view.style.display = "block";
 app.renderer.autoResize = true;
@@ -19,9 +18,17 @@ canvas.appendChild(app.view);
 
 const CLIENT_WIDTH = app.renderer.width;
 const CLIENT_HEIGHT = app.renderer.height;
-const LEFT_WIDTH = Math.floor(CLIENT_WIDTH * 0.73);
-const RIGHT_WIDTH = CLIENT_WIDTH - LEFT_WIDTH;
 const COLORS = [ 0x061e81, 0x1E1B9B, 0x1B519B, 0x237BC4, 0x58b7ee, 0xc9dae3, 0xf2f3d6, 0xedf271, 0xEDE780, 0xE5B329, 0xF7D82C, 0xf2962a, 0xf24f2a, 0xf43205, 0xDB061B, 0xA51D32, 0x8E1925 ];
+
+const bg = PIXI.Sprite.fromImage(bgImg);
+bg.anchor.set(0.5);
+bg.x = app.renderer.width / 2;
+bg.y = app.renderer.height / 2;
+bg.width = CLIENT_WIDTH;
+console.log(bg.width)
+bg.height = CLIENT_WIDTH * 1080 / 1400;
+
+app.stage.addChild(bg);
 
 const particle1 = new Particle({
   startX: 200,
