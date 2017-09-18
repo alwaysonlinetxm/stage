@@ -25,57 +25,50 @@ bg.anchor.set(0.5);
 bg.x = app.renderer.width / 2;
 bg.y = app.renderer.height / 2;
 bg.width = CLIENT_WIDTH;
-console.log(bg.width)
 bg.height = CLIENT_WIDTH * 1080 / 1400;
 
 app.stage.addChild(bg);
 
 const particle1 = new Particle({
-  startX: 200,
-  endX: 0,
-  startY1: 0,
-  startY2: 20,
-  endY1: 10,
-  endY2: 50,
-  sum: 200,
+  width: -200,
+  height: 20,
+  k: 0.5,
+  w: 30,
+  sum: 500,
   color: 0xEDE780
 });
 
-particle1.particles.rotation = Math.PI * 0.03;
-particle1.particles.x = 200;
-particle1.particles.y = 300;
+// particle1.particles.rotation = Math.PI * 0.03;
+particle1.particles.x = CLIENT_WIDTH * 0.35;
+particle1.particles.y = CLIENT_HEIGHT * 0.47;
 app.stage.addChild(particle1.particles);
 
 const particle2= new Particle({
-  startX: 300,
-  endX: 0,
-  startY1: 0,
-  startY2: 10,
-  endY1: 10,
-  endY2: 200,
-  sum: 200,
+  width: -300,
+  height: 20,
+  k: 1,
+  w: 100,
+  sum: 500,
   color: 0xEDE780
 });
 
-particle2.particles.rotation = Math.PI * 0.1;
-particle2.particles.x = 60;
-particle2.particles.y = 100;
+particle2.particles.rotation = Math.PI * 0.15;
+particle2.particles.x = CLIENT_WIDTH * 0.5;
+particle2.particles.y = CLIENT_HEIGHT * 0.22;
 app.stage.addChild(particle2.particles);
 
 const particle3= new Particle({
-  startX: 200,
-  endX: 0,
-  startY1: 0,
-  startY2: 50,
-  endY1: 50,
-  endY2: 150,
-  sum: 200,
+  width: 200,
+  height: 50,
+  k: 1,
+  w: 100,
+  sum: 500,
   color: 0xEDE780
 });
 
-window.p = particle2;
-particle3.particles.rotation = Math.PI * 0.55;
-particle3.particles.x = 600;
+particle3.particles.rotation = Math.PI * -0.65;
+particle3.particles.x = CLIENT_WIDTH * 0.63;
+particle3.particles.y = CLIENT_HEIGHT * 0.25;
 app.stage.addChild(particle3.particles);
 
 app.ticker.add(function() {

@@ -7,14 +7,14 @@ export default class Particle {
     this.particles = new PIXI.Container();
     this.particleTexture = PIXI.Texture.fromImage(particleImg);
     this.particleList = [];
-    this.startX = opt.startX;
-    this.endX = opt.endX;
-    this.startY1 = opt.startY1;
-    this.endY1 = opt.endY1;
-    this.startY2 = opt.startY2;
-    this.endY2 = opt.endY2;
+    this.startX = 0;
+    this.endX = opt.width;
+    this.startY1 = 0;
+    this.startY2 = opt.height;
     this.sum = opt.sum;
     this.color = opt.color;
+    this.k = opt.k;
+    this.w = opt.w;
     this.radius = 2;
     this.dir = this.startX > this.endX ? -1 : 1;
     this.x1 = this.startX + (this.endX - this.startX) * 0.3;
@@ -61,18 +61,16 @@ export default class Particle {
   }
 
   animate() {
-    const { particleList, startX, endX, startY1, startY2, x1, x2, dir, sum } = this;
-    let sumx = 0;
+    const { particleList, startX, endX, startY1, startY2, x1, x2, dir, sum, k } = this;
 
     for (let i = 0; i < Math.min(sum, particleList.length); i++) {
       const node = particleList[i];
 
       if (dir === 1 && node.x < endX || dir === -1 && node.x >= endX) {
-        const { dis, k } = node;
+        const { dis } = node;
 
-        sumx += dis;
         node.x += dis;
-        node.y += dis / k;
+        node.y = node.startY + Math.sqrt(Math.abs(node.x)) * k + Math.sqrt(node.w * Math.abs(node.x));
         if (dir === 1 && node.x < x1 || dir === -1 && node.x >= x1) {
           node.alpha = (node.x - startX) / (x1 - startX);
         } else if (dir === 1 && node.x > x2 || dir === -1 && node.x <= x2) {
@@ -89,21 +87,17 @@ export default class Particle {
   }
 
   _createParticle() {
-    const { startX, endX, startY1, startY2, endY1, endY2, dir, color } = this;
+    const { startX, endX, startY1, startY2, dir, color, w } = this;
     const particle = new PIXI.Graphics();
 
     particle.lineStyle(0);
     particle.beginFill(color, 0.5);
     particle.drawCircle(0, 0, this.radius);
     particle.endFill();
-    particle.x = startX;
-    particle.y = startY1 + (Math.random() * (startY2 - startY1));
-    particle.alpha = 0;
     // custom attr
     particle.dis = dir * (0.5 + Math.random() * 0.5);
-
-    const endY = (particle.y - startY1) * (endY2 - startY2) / (endY1 - startY1) + startY2;
-    particle.k = (startX - endX) / (particle.y - endY);
+    particle.startY = startY1 + (Math.random() * (startY2 - startY1));
+    particle.w = 1 + w * Math.random();
 
     return particle;
   }
