@@ -9,6 +9,47 @@ html, body {
   @include flex(horizontal, center, stretch);
 }
 
+.title {
+  position: absolute;
+  z-index: 10;
+  top: 20px;
+  left: 0;
+  width: 290;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 30px;
+  color: #fff;
+  font-size: 20px;
+  background-color: #293852;
+
+  &:after {
+    content: '';
+    right: -40px;
+    position: absolute;
+    display: inline-block;
+    border-top: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #293852;
+    border-left: 20px solid #293852;
+  }
+
+  @media screen and (min-width: 1680px) {
+    width: 470px;
+    height: 64px;
+    line-height: 64px;
+    font-size: 32px;
+    padding-left: 40px;
+
+    &:after {
+      right: -64px;
+      border-top: 32px solid transparent;
+      border-right: 32px solid transparent;
+      border-bottom: 32px solid #293852;
+      border-left: 32px solid #293852;
+    }
+  }
+}
+
 .canvas {
   width: 73%;
   height: 100%;
