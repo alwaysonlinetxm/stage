@@ -135,6 +135,9 @@ function setArrow(temp) {
 }
 
 setInterval(() => {
+  // Util.request('S2=&S3=&S4=').then(res => {
+  //
+  // });
   const temp = Math.ceil(16 * Math.random());
   const sum =  100 + Math.ceil(500 * Math.random());
   setArrow(temp + 16);
