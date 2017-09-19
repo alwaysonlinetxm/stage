@@ -30,27 +30,27 @@ bg.height = CLIENT_WIDTH * 1080 / 1400;
 
 app.stage.addChild(bg);
 
-const band1 = new Band({
-  startX: -30,
-  endX: -200,
-  k1: 10,
-  k2: 10,
-  color: 0xEDE780
-});
+// const band1 = new Band({
+//   startX: -30,
+//   endX: -200,
+//   k1: 10,
+//   k2: 10,
+//   color: 0xEDE780
+// });
+//
+// band1.band.rotation = Math.PI * 0.03;
+// band1.band.x = CLIENT_WIDTH * 0.38;
+// band1.band.y = CLIENT_HEIGHT * 0.45;
+// app.stage.addChild(band1.band);
 
-band1.band.rotation = Math.PI * 0.03;
-band1.band.x = CLIENT_WIDTH * 0.38;
-band1.band.y = CLIENT_HEIGHT * 0.45;
-app.stage.addChild(band1.band);
-
-window.b = band1;
+// window.b = band1;
 
 const particle1 = new Particle({
   width: -200,
   height: 20,
   k: 0.5,
   w: 30,
-  sum: 200,
+  sum: 300,
   color: 0xEDE780
 });
 
@@ -59,18 +59,18 @@ particle1.particles.x = CLIENT_WIDTH * 0.35;
 particle1.particles.y = CLIENT_HEIGHT * 0.47;
 app.stage.addChild(particle1.particles);
 
-const band2 = new Band({
-  startX: -30,
-  endX: -300,
-  k1: 10,
-  k2: 13,
-  color: 0xEDE780
-});
-
-band2.band.rotation = Math.PI * 0.15;
-band2.band.x = CLIENT_WIDTH * 0.52;
-band2.band.y = CLIENT_HEIGHT * 0.22;
-app.stage.addChild(band2.band);
+// const band2 = new Band({
+//   startX: -30,
+//   endX: -300,
+//   k1: 10,
+//   k2: 13,
+//   color: 0xEDE780
+// });
+//
+// band2.band.rotation = Math.PI * 0.15;
+// band2.band.x = CLIENT_WIDTH * 0.52;
+// band2.band.y = CLIENT_HEIGHT * 0.22;
+// app.stage.addChild(band2.band);
 
 const particle2= new Particle({
   width: -300,
@@ -86,18 +86,18 @@ particle2.particles.x = CLIENT_WIDTH * 0.5;
 particle2.particles.y = CLIENT_HEIGHT * 0.22;
 app.stage.addChild(particle2.particles);
 
-const band3 = new Band({
-  startX: -70,
-  endX: 250,
-  k1: 10,
-  k2: 13,
-  color: 0xEDE780
-});
-
-band3.band.rotation = Math.PI * -0.5;
-band3.band.x = CLIENT_WIDTH * 0.56;
-band3.band.y = CLIENT_HEIGHT * 0.33;
-app.stage.addChild(band3.band);
+// const band3 = new Band({
+//   startX: -70,
+//   endX: 250,
+//   k1: 10,
+//   k2: 13,
+//   color: 0xEDE780
+// });
+//
+// band3.band.rotation = Math.PI * -0.5;
+// band3.band.x = CLIENT_WIDTH * 0.56;
+// band3.band.y = CLIENT_HEIGHT * 0.33;
+// app.stage.addChild(band3.band);
 
 const particle3= new Particle({
   width: 200,
@@ -139,15 +139,15 @@ setInterval(() => {
   //
   // });
   const temp = Math.ceil(16 * Math.random());
-  const sum =  100 + Math.ceil(500 * Math.random());
+  const sum =  500 + Math.ceil(500 * Math.random());
   setArrow(temp + 16);
-  particle1.setColor(COLORS[temp], 20);
+  particle1.setColor(COLORS[temp], 1);
   particle1.setSum(sum, 10);
-  particle2.setColor(COLORS[temp], 20);
-  particle2.setSum(sum, 10);
-  particle3.setColor(COLORS[temp], 20);
-  particle3.setSum(sum, 10);
-  band1.setColor(COLORS[temp]);
-  band2.setColor(COLORS[temp]);
-  band3.setColor(COLORS[temp]);
+  particle2.setColor(COLORS[temp], 1);
+  particle2.setSum(sum * 1.5, 10);
+  particle3.setColor(COLORS[temp], 1);
+  particle3.setSum(sum * 1.5, 10);
+  // band1.setColor(COLORS[temp]);
+  // band2.setColor(COLORS[temp]);
+  // band3.setColor(COLORS[temp]);
 }, 10000);
