@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function makeWebpackConfig(env) {
   const name = env.name;
-  const distPath = path.join(__dirname, `dist/${name}`);
+  const distPath = path.join(__dirname, `docs/${name}`);
 
 	return {
 	  entry: `./src/${name}/`,
