@@ -63,7 +63,7 @@ html, body {
   height: 125px;
   background: url(./images/inside.png) no-repeat;
   background-size: 201px 125px;
-  animation: inside 6s infinite;
+  animation: inside 3s infinite;
 
   @media screen and (min-width: 1680px) {
     width: 280px;
@@ -79,13 +79,13 @@ html, body {
     opacity: 0;
     transform: rotate(0deg);
   }
-  2% {
-    opacity: 1;
-  }
-  16% {
+  8% {
     opacity: 1;
   }
   22% {
+    opacity: 1;
+  }
+  30% {
     top: 80%;
     left: 58%;
     opacity: 0;
@@ -97,13 +97,13 @@ html, body {
     opacity: 0;
     transform: rotate(-120deg);
   }
-  35% {
-    opacity: 1;
-  }
-  49% {
+  41% {
     opacity: 1;
   }
   55% {
+    opacity: 1;
+  }
+  63% {
     top: 62%;
     left: 67%;
     opacity: 0;
@@ -115,13 +115,13 @@ html, body {
     opacity: 0;
     transform: rotate(120deg);
   }
-  68% {
-    opacity: 1;
-  }
-  82% {
+  74% {
     opacity: 1;
   }
   88% {
+    opacity: 1;
+  }
+  96% {
     top: 65%;
     left: 47%;
     opacity: 0;
@@ -134,10 +134,77 @@ html, body {
 
 .outside {
   position: absolute;
-  width: 198px;
-  height: 235px;
-  background: url(./images/inside.png) no-repeat;
-  background-size: 198px 235px;
+  width: 120px;
+  height: 142px;
+  background: url(./images/outside.png) no-repeat;
+  background-size: 120px 142px;
+  animation: outside 3s infinite;
+
+  @media screen and (min-width: 1680px) {
+    width: 180px;
+    height: 213px;
+    background-size: 180px 213px;
+  }
+}
+
+@keyframes outside {
+  0% {
+    top: 3%;
+    left: 74%;
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  8% {
+    opacity: 1;
+  }
+  22% {
+    opacity: 1;
+  }
+  30% {
+    top: 7%;
+    left: 72%;
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  33% {
+    top: 55%;
+    left: 60%;
+    opacity: 0;
+    transform: rotate(15deg);
+  }
+  41% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  63% {
+    top: 59%;
+    left: 57%;
+    opacity: 0;
+    transform: rotate(15deg);
+  }
+  66% {
+    top: 73%;
+    left: 48%;
+    opacity: 0;
+    transform: rotate(35deg);
+  }
+  74% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  96% {
+    top: 76%;
+    left: 45%;
+    opacity: 0;
+    transform: rotate(35deg);
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .canvas {
