@@ -9,6 +9,13 @@ html, body {
   @include flex(horizontal, center, stretch);
 }
 
+.left {
+  position: relative;
+  width: 73%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .title {
   position: absolute;
   z-index: 10;
@@ -50,8 +57,91 @@ html, body {
   }
 }
 
+.inside {
+  position: absolute;
+  width: 201px;
+  height: 125px;
+  background: url(./images/inside.png) no-repeat;
+  background-size: 201px 125px;
+  animation: inside 6s infinite;
+
+  @media screen and (min-width: 1680px) {
+    width: 321px;
+    height: 201px;
+    background-size: 321px 201px;
+  }
+}
+
+@keyframes inside {
+  0% {
+    top: 80%;
+    left: 55%;
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  2% {
+    opacity: 1;
+  }
+  16% {
+    opacity: 1;
+  }
+  22% {
+    top: 80%;
+    left: 58%;
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  33% {
+    top: 65%;
+    left: 70%;
+    opacity: 0;
+    transform: rotate(-120deg);
+  }
+  35% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  55% {
+    top: 62%;
+    left: 67%;
+    opacity: 0;
+    transform: rotate(-120deg);
+  }
+  66% {
+    top: 62%;
+    left: 50%;
+    opacity: 0;
+    transform: rotate(120deg);
+  }
+  68% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  88% {
+    top: 65%;
+    left: 47%;
+    opacity: 0;
+    transform: rotate(120deg);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.outside {
+  position: absolute;
+  width: 198px;
+  height: 235px;
+  background: url(./images/inside.png) no-repeat;
+  background-size: 198px 235px;
+}
+
 .canvas {
-  width: 73%;
+  width: 100%;
   height: 100%;
 }
 

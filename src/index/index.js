@@ -30,27 +30,12 @@ bg.height = CLIENT_WIDTH * 1080 / 1400;
 
 app.stage.addChild(bg);
 
-// const band1 = new Band({
-//   startX: -30,
-//   endX: -200,
-//   k1: 10,
-//   k2: 10,
-//   color: 0xEDE780
-// });
-//
-// band1.band.rotation = Math.PI * 0.03;
-// band1.band.x = CLIENT_WIDTH * 0.38;
-// band1.band.y = CLIENT_HEIGHT * 0.45;
-// app.stage.addChild(band1.band);
-
-// window.b = band1;
-
 const particle1 = new Particle({
   width: -200,
   height: 20,
   k: 0.5,
   w: 30,
-  sum: 500,
+  sum: 0,
   color: 0xEDE780
 });
 
@@ -59,25 +44,12 @@ particle1.particles.x = CLIENT_WIDTH * 0.35;
 particle1.particles.y = CLIENT_HEIGHT * 0.47;
 app.stage.addChild(particle1.particles);
 
-// const band2 = new Band({
-//   startX: -30,
-//   endX: -300,
-//   k1: 10,
-//   k2: 13,
-//   color: 0xEDE780
-// });
-//
-// band2.band.rotation = Math.PI * 0.15;
-// band2.band.x = CLIENT_WIDTH * 0.52;
-// band2.band.y = CLIENT_HEIGHT * 0.22;
-// app.stage.addChild(band2.band);
-
 const particle2= new Particle({
   width: -300,
   height: 20,
   k: 1,
   w: 100,
-  sum: 1000,
+  sum: 0,
   color: 0xEDE780
 });
 
@@ -86,25 +58,12 @@ particle2.particles.x = CLIENT_WIDTH * 0.5;
 particle2.particles.y = CLIENT_HEIGHT * 0.22;
 app.stage.addChild(particle2.particles);
 
-// const band3 = new Band({
-//   startX: -70,
-//   endX: 250,
-//   k1: 10,
-//   k2: 13,
-//   color: 0xEDE780
-// });
-//
-// band3.band.rotation = Math.PI * -0.5;
-// band3.band.x = CLIENT_WIDTH * 0.56;
-// band3.band.y = CLIENT_HEIGHT * 0.33;
-// app.stage.addChild(band3.band);
-
 const particle3= new Particle({
   width: 200,
   height: 50,
   k: 1,
   w: 100,
-  sum: 800,
+  sum: 0,
   color: 0xEDE780
 });
 
@@ -121,6 +80,11 @@ app.ticker.add(function() {
 
 const arrow = document.querySelector('.db-arrow');
 const nums = document.querySelectorAll('.db-num');
+const tempDom = document.querySelector('#temp');
+const sumDom = document.querySelector('#sum');
+const dirDom = document.querySelector('#dir');
+const inside = document.querySelector('.inside');
+const outside = document.querySelector('.ouside');
 
 function setArrow(temp) {
   const deg = (temp - 16) * 15 - 120;
@@ -134,20 +98,34 @@ function setArrow(temp) {
   });
 }
 
+function updateState(temp, sum, dir) {
+  const intTemp = Math.ceil(temp) - 16;
+
+  setArrow(temp);
+  particle1.setColor(COLORS[intTemp], 1);
+  particle1.setSum(sum * 10, 5);
+  particle2.setColor(COLORS[intTemp], 1);
+  particle2.setSum(sum * 20, 5);
+  particle3.setColor(COLORS[intTemp], 1);
+  particle3.setSum(sum * 16, 5);
+  tempDom.innerHTML = `车内温度：${temp}℃`;
+  sumDom.innerHTML = `当前风量：${sum}%`;
+  dirDom.innerHTML = `进风方式：${dir}`;
+}
+
+const temp = 16 + Math.ceil(16 * Math.random());
+const sum =  Math.ceil(100 * Math.random());
+const dir = '内循环';
+
+updateState(temp, sum, dir);
+
 setInterval(() => {
   // Util.request('S2=&S3=&S4=').then(res => {
   //
   // });
-  const temp = Math.ceil(16 * Math.random());
-  const sum =  500 + Math.ceil(500 * Math.random());
-  setArrow(temp + 16);
-  particle1.setColor(COLORS[temp], 1);
-  particle1.setSum(sum, 5);
-  particle2.setColor(COLORS[temp], 1);
-  particle2.setSum(sum * 2, 5);
-  particle3.setColor(COLORS[temp], 1);
-  particle3.setSum(sum * 1.6, 5);
-  // band1.setColor(COLORS[temp]);
-  // band2.setColor(COLORS[temp]);
-  // band3.setColor(COLORS[temp]);
+  const temp = 16 + Math.ceil(16 * Math.random());
+  const sum =  Math.ceil(100 * Math.random());
+  const dir = '内循环';
+
+  updateState(temp, sum, dir);
 }, 10000);

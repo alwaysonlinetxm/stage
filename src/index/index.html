@@ -9,8 +9,12 @@
 </head>
 <body>
 	<div class="box">
-		<p class="title">车载空调实验数据可视化系统</p>
-		<div class="canvas"></div>
+		<div class="left">
+			<p class="title">车载空调实验数据可视化系统</p>
+			<div class="canvas"></div>
+			<div class="inside"></div>
+			<div class="outside"></div>
+		</div>
 		<div class="right">
 			<div class="dashboard">
 				<!-- <div class="db-circle"> -->
@@ -37,9 +41,9 @@
 				<span class="db-num">32</span>
 			</div>
 			<ul class="info-list">
-				<li class="info">车内温度：25℃</li>
-				<li class="info">当前风量：25%</li>
-				<li class="info">进风方式：内循环</li>
+				<li id="temp" class="info">车内温度：25℃</li>
+				<li id="sum" class="info">当前风量：25%</li>
+				<li id="dir" class="info">进风方式：内循环</li>
 			</ul>
 		</div>
 	</div>
