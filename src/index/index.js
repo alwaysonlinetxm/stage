@@ -31,7 +31,7 @@ bg.height = CLIENT_WIDTH * 1080 / 1400;
 app.stage.addChild(bg);
 
 const particle1 = new Particle({
-  width: -200,
+  width: - CLIENT_WIDTH * 0.18,
   height: 20,
   k: 0.5,
   w: 30,
@@ -45,7 +45,7 @@ particle1.particles.y = CLIENT_HEIGHT * 0.47;
 app.stage.addChild(particle1.particles);
 
 const particle2= new Particle({
-  width: -300,
+  width: - CLIENT_WIDTH * 0.3,
   height: 20,
   k: 1,
   w: 100,
@@ -59,7 +59,7 @@ particle2.particles.y = CLIENT_HEIGHT * 0.22;
 app.stage.addChild(particle2.particles);
 
 const particle3= new Particle({
-  width: 200,
+  width: CLIENT_WIDTH * 0.24,
   height: 50,
   k: 1,
   w: 100,
@@ -133,11 +133,11 @@ setInterval(() => {
   // });
   temp = 16 + Math.ceil(16 * Math.random());
   sum =  Math.ceil(100 * Math.random());
-  if (dir === '内循环') {
-    dir = '外循环';
-  } else {
-    dir = '内循环';
-  }
+  // if (dir === '内循环') {
+  //   dir = '外循环';
+  // } else {
+  //   dir = '内循环';
+  // }
 
   updateState(temp, sum, dir);
 }, 10000);
