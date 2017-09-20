@@ -84,7 +84,7 @@ const tempDom = document.querySelector('#temp');
 const sumDom = document.querySelector('#sum');
 const dirDom = document.querySelector('#dir');
 const inside = document.querySelector('.inside');
-const outside = document.querySelector('.ouside');
+const outside = document.querySelector('.outside');
 
 function setArrow(temp) {
   const deg = (temp - 16) * 15 - 120;
@@ -111,11 +111,19 @@ function updateState(temp, sum, dir) {
   tempDom.innerHTML = `车内温度：${temp}℃`;
   sumDom.innerHTML = `当前风量：${sum}%`;
   dirDom.innerHTML = `进风方式：${dir}`;
+
+  if (dir === '内循环') {
+    inside.style.display = 'block';
+    outside.style.display = 'none';
+  } else {
+    inside.style.display = 'none';
+    outside.style.display = 'block';
+  }
 }
 
-const temp = 16 + Math.ceil(16 * Math.random());
-const sum =  Math.ceil(100 * Math.random());
-const dir = '内循环';
+let temp = 16 + Math.ceil(16 * Math.random());
+let sum =  Math.ceil(100 * Math.random());
+let dir = '内循环';
 
 updateState(temp, sum, dir);
 
@@ -123,9 +131,13 @@ setInterval(() => {
   // Util.request('S2=&S3=&S4=').then(res => {
   //
   // });
-  const temp = 16 + Math.ceil(16 * Math.random());
-  const sum =  Math.ceil(100 * Math.random());
-  const dir = '内循环';
+  temp = 16 + Math.ceil(16 * Math.random());
+  sum =  Math.ceil(100 * Math.random());
+  if (dir === '内循环') {
+    dir = '外循环';
+  } else {
+    dir = '内循环';
+  }
 
   updateState(temp, sum, dir);
 }, 10000);
