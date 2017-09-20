@@ -50,7 +50,7 @@ const particle1 = new Particle({
   height: 20,
   k: 0.5,
   w: 30,
-  sum: 300,
+  sum: 500,
   color: 0xEDE780
 });
 
@@ -77,7 +77,7 @@ const particle2= new Particle({
   height: 20,
   k: 1,
   w: 100,
-  sum: 500,
+  sum: 1000,
   color: 0xEDE780
 });
 
@@ -104,7 +104,7 @@ const particle3= new Particle({
   height: 50,
   k: 1,
   w: 100,
-  sum: 500,
+  sum: 800,
   color: 0xEDE780
 });
 
@@ -142,11 +142,11 @@ setInterval(() => {
   const sum =  500 + Math.ceil(500 * Math.random());
   setArrow(temp + 16);
   particle1.setColor(COLORS[temp], 1);
-  particle1.setSum(sum, 10);
+  particle1.setSum(sum, 5);
   particle2.setColor(COLORS[temp], 1);
-  particle2.setSum(sum * 1.5, 10);
+  particle2.setSum(sum * 2, 5);
   particle3.setColor(COLORS[temp], 1);
-  particle3.setSum(sum * 1.5, 10);
+  particle3.setSum(sum * 1.6, 5);
   // band1.setColor(COLORS[temp]);
   // band2.setColor(COLORS[temp]);
   // band3.setColor(COLORS[temp]);
