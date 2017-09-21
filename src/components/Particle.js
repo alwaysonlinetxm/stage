@@ -1,11 +1,8 @@
 import 'pixi.js';
 
-import particleImg from './images/particle.png';
-
 export default class Particle {
   constructor(opt) {
     this.particles = new PIXI.Container();
-    this.particleTexture = PIXI.Texture.fromImage(particleImg);
     this.particleList = [];
     this.startX = 0;
     this.endX = opt.width;

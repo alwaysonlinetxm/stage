@@ -1,7 +1,6 @@
 import 'pixi.js';
 
-import Particle from './Particle';
-import Band from './Band';
+import Particle from '../components/Particle';
 
 import '../libs/reset.scss';
 import './index.scss';
