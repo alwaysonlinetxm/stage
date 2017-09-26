@@ -28,4 +28,6 @@ export function updatePage2(mode, temp, sum, blue, red) {
   } else {
     doors[2].style.webkitTransform = 'rotate(40deg)';
   }
+
+  doors[3].style.webkitTransform = `rotate(${45 - ((temp - 16) / 16) * 70}deg)`;
 }
