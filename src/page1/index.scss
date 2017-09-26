@@ -1,8 +1,10 @@
 @import '../libs/common.scss';
 
 .page1 {
-  height: 100%;
-  @include flex(horizontal, center, stretch);
+  .container {
+    height: 100%;
+    @include flex(horizontal, center, stretch);
+  }
 
   .left {
     position: relative;

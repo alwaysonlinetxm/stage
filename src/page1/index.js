@@ -7,7 +7,7 @@ import './index.scss';
 import bgImg from './images/bg.png';
 
 // initial whole stage
-const canvas = document.querySelector('.canvas');
+const canvas = document.querySelector('.page1 .canvas');
 const app = new PIXI.Application(800, 600, { backgroundColor : 0x000000, antialias: true });
 app.view.style.position = "absolute";
 app.view.style.display = "block";
@@ -76,13 +76,13 @@ app.ticker.add(function() {
   particle3.animate();
 });
 
-const arrow = document.querySelector('.db-arrow');
-const nums = document.querySelectorAll('.db-num');
-const tempDom = document.querySelector('#temp');
-const sumDom = document.querySelector('#sum');
-const dirDom = document.querySelector('#dir');
-const inside = document.querySelector('.inside');
-const outside = document.querySelector('.outside');
+const arrow = document.querySelector('.page1 .db-arrow');
+const nums = document.querySelectorAll('.page1 .db-num');
+const tempDom = document.querySelector('#p1-temp');
+const sumDom = document.querySelector('#p1-sum');
+const dirDom = document.querySelector('#p1-dir');
+const inside = document.querySelector('.page1 .inside');
+const outside = document.querySelector('.page1 .outside');
 
 function setArrow(temp) {
   const deg = (temp - 16) * 15 - 120;
