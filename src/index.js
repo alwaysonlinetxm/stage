@@ -4,7 +4,25 @@ import './index.scss';
 import { updateState } from './page1/index';
 
 const CLIENT_WIDTH = window.innerWidth;
-// const box = document.querySelector('')
+const box = document.querySelector('.box');
+const back = document.querySelector('.back');
+const forward = document.querySelector('.forward');
+let curIndex = 0;
+
+back.addEventListener('click', () => {
+  if (curIndex > 0) {
+    curIndex--;
+    box.style.webkitTransform = `translateX(-${curIndex * CLIENT_WIDTH}px)`;
+  }
+}, false);
+
+forward.addEventListener('click', () => {
+  if (curIndex < 3) {
+    curIndex++;
+    box.style.webkitTransform = `translateX(-${curIndex * CLIENT_WIDTH}px)`;
+  }
+}, false);
+
 
 let temp = 16 + Math.ceil(16 * Math.random());
 let sum =  Math.ceil(100 * Math.random());
