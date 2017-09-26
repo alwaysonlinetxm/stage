@@ -3,8 +3,68 @@
 .page2 {
 
   .container {
+    position: relative;
     height: 100%;
     background: url(./images/bg.jpg) no-repeat center;
     background-size: contain;
+  }
+
+  .blue,
+  .red {
+    position: absolute;
+    width: 14%;
+    height: 7%;
+    text-align: center;
+    color: #fff;
+    font-size: 40px;
+    border-radius: 5px;
+
+    @media screen and (min-width: 1680px) {
+      font-size: 60px;
+    }
+
+    .num {
+      display: block;
+      height: 100%;
+      line-height: 113%;
+    }
+
+    .line {
+      position: absolute;
+    }
+  }
+
+  .blue {
+    top: 22%;
+    right: 20%;
+    background-color: #2f75fb;
+    border: 5px solid #4876cb;
+
+    .line {
+      position: absolute;
+      top: 70%;
+      left: -50%;
+      width: 40%;
+      height: 5px;
+      background-color: #4876cb;
+      transform: rotate(-45deg);
+
+      &:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        width: 20%;
+        height: 5px;
+        background-color: #4876cb;
+        transform: translate(225%, 65%) rotate(45deg);
+      }
+    }
+  }
+
+  .red {
+    bottom: 3%;
+    left: 37%;
+    background-color: #e4574e;
+    border: 5px solid #992f31;
   }
 }
