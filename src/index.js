@@ -1,7 +1,9 @@
 import './libs/reset.scss';
 import './index.scss';
 
-import { updateState } from './page1/index';
+import { updatePage1 } from './page1/index';
+import { updatePage2 } from './page2/index';
+
 
 const CLIENT_WIDTH = window.innerWidth;
 const box = document.querySelector('.box');
@@ -28,7 +30,7 @@ let temp = 16 + Math.ceil(16 * Math.random());
 let sum =  Math.ceil(100 * Math.random());
 let dir = '外循环';
 
-updateState(temp, sum, dir);
+updatePage1(temp, sum, dir);
 
 
 
@@ -44,5 +46,5 @@ setInterval(() => {
     dir = '内循环';
   }
 
-  updateState(temp, sum, dir);
+  updatePage1(temp, sum, dir);
 }, 10000);

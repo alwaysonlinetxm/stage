@@ -96,7 +96,7 @@ function setArrow(temp) {
   });
 }
 
-export function updateState(temp, sum, dir) {
+export function updatePage1(temp, sum, dir) {
   const intTemp = Math.ceil(temp) - 16;
 
   setArrow(temp);
