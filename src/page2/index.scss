@@ -53,10 +53,12 @@
         content: '';
         display: inline-block;
         position: absolute;
+        top: 90%;
+        left: 96%;
         width: 20%;
         height: 5px;
         background-color: #4876cb;
-        transform: translate(225%, 65%) rotate(45deg);
+        transform: rotate(45deg);
       }
     }
   }
@@ -66,5 +68,27 @@
     left: 37%;
     background-color: #e4574e;
     border: 5px solid #992f31;
+
+    .line {
+      position: absolute;
+      top: -130%;
+      left: -30%;
+      width: 130%;
+      height: 5px;
+      background-color: #992f31;
+      transform: rotate(-30deg);
+
+      &:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 10%;
+        height: 5px;
+        background-color: #992f31;
+        transform: rotate(30deg);
+      }
+    }
   }
 }
