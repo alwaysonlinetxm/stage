@@ -1,8 +1,8 @@
 import 'pixi.js';
 
-import Particle from '../components/Particle';
+import Particle from './components/Particle';
 
-import '../libs/reset.scss';
+import './libs/reset.scss';
 import './index.scss';
 
 import bgImg from './images/bg.png';

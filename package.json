@@ -6,9 +6,7 @@
   "private": true,
   "scripts": {
     "start": "webpack -w --env.name index",
-    "dev": "webpack-dev-server --hot --env.name index",
-    "start_sec": "webpack -w --env.name sec",
-    "dev_sec": "webpack-dev-server --hot --env.name sec"
+    "dev": "webpack-dev-server --hot --env.name index"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
