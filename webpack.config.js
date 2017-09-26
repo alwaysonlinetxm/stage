@@ -5,11 +5,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function makeWebpackConfig(env) {
-  const name = env.name;
-  const distPath = path.join(__dirname, `docs/${name}`);
+  const distPath = path.join(__dirname, 'docs');
 
 	return {
-	  entry: `./src/${name}/`,
+	  entry: './src/',
 	  output: {
 	    path: distPath,
 	    filename: 'bundle.[hash].js'
@@ -62,7 +61,7 @@ module.exports = function makeWebpackConfig(env) {
 	      dry: false
 	    }),
 			new HtmlWebpackPlugin({
-				template: `./src/${name}/index.html`,
+				template: './src/index.html',
 				filename: 'index.html',
 				minify: {
 					minifyJS: true,

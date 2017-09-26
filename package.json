@@ -5,8 +5,8 @@
   "author": "alwaysonlinetxm",
   "private": true,
   "scripts": {
-    "start": "webpack -w --env.name index",
-    "dev": "webpack-dev-server --hot --env.name index"
+    "start": "webpack -w",
+    "dev": "webpack-dev-server --hot"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
