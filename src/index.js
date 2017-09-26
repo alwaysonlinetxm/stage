@@ -35,7 +35,6 @@ let red = 85;
 updatePage1(temp, sum, dir);
 updatePage2(mode, temp, sum, blue, red);
 
-
 setInterval(() => {
   // Util.request('S1=&S2=&S3=&S4=&S5=&S6=').then(res => {
   //
