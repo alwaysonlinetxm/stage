@@ -131,4 +131,18 @@
       transform: rotate(45deg);
     }
   }
+
+  .arrows1 {
+    position: absolute;
+    top: 46%;
+    left: 63%;
+    height: 34%;
+    background-color: rgba(0,0,0,0.1);
+
+    svg {
+      position: absolute;
+      width: 100px;
+      height: 10px;
+    }
+  }
 }
