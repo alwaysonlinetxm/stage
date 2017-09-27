@@ -53,23 +53,29 @@ html, body {
   transition: all linear 0.5s;
 }
 
+$arrowWidth: 3%;
+
 .back,
 .forward {
   position: fixed;
   top: 50%;
   z-index: 1001;
-  margin-top: -50px;
-  width: 50px;
-  height: 100px;
+  width: $arrowWidth;
+  padding-bottom: $arrowWidth * 3.55;
+  transform: translateY(-50%);
   background-color: #f00;
 }
 
 .back {
   left: 0;
+  background: url(./images/back.png) no-repeat;
+  background-size: contain;
 }
 
 .forward {
   right: 0;
+  background: url(./images/forward.png) no-repeat;
+  background-size: contain;
 }
 
 .page1,
