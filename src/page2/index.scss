@@ -137,12 +137,23 @@
     top: 46%;
     left: 63%;
     height: 34%;
-    background-color: rgba(0,0,0,0.1);
 
     svg {
       position: absolute;
       width: 100px;
       height: 10px;
+    }
+  }
+
+  .arrows2 {
+    position: absolute;
+    top: 41%;
+    left: 38%;
+    width: 30%;
+    height: 34%;
+
+    svg {
+      position: absolute;
     }
   }
 }
