@@ -159,7 +159,19 @@
 
   .arrows3 {
     position: absolute;
-    top: 38%;
+    top: 37%;
+    left: 48%;
+    width: 30%;
+    height: 34%;
+
+    svg {
+      position: absolute;
+    }
+  }
+
+  .arrows4 {
+    position: absolute;
+    top: 48%;
     left: 48%;
     width: 30%;
     height: 34%;
