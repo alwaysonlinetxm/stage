@@ -7,6 +7,7 @@ const redNum = document.querySelector('.page2 .red .num');
 const doors = document.querySelectorAll('.page2 .door');
 const arrows1 = document.querySelector('.page2 .arrows1');
 const arrows2 = document.querySelector('.page2 .arrows2');
+const arrows3 = document.querySelector('.page2 .arrows3');
 
 function updateArrows1(temp, sum) {
   const levels = Math.ceil(sum / 10);
@@ -56,6 +57,33 @@ function updateArrows2(temp, sum) {
   }
 }
 
+function updateArrows3(temp, sum) {
+  const levels = Math.ceil(sum / 20);
+  const polygons = arrows3.querySelectorAll('svg');
+
+  polygons.forEach(node => arrows3.removeChild(node));
+
+  for (let i = 0; i < levels; i++) {
+    const polygon = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    polygon.setAttribute('width', CLIENT_WIDTH * 0.094);
+    polygon.setAttribute('height', CLIENT_WIDTH * 0.117);
+    polygon.style.top = `-${i * 2}%`;
+    polygon.style.left = `${i * 1}%`;
+
+    polygon.innerHTML = `
+      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:#2f75fb">
+        <animateMotion path="M100,90 q-100,-40 -90,-80" begin="0s" dur="1.5s" rotate="auto" repeatCount="indefinite"/>
+        <animate attributeName="opacity" begin="0s" dur="1.5s" values="0;1;1;0" repeatCount="indefinite" />
+      </polygon>
+    `;
+    if (i % 2 === 1) {
+      setTimeout(() => arrows3.appendChild(polygon), 750);
+    } else {
+      arrows3.appendChild(polygon);
+    }
+  }
+}
+
 export function updatePage2(mode, temp, sum, blue, red) {
   blueNum.innerHTML = `${blue}℃`;
   redNum.innerHTML = `${red}℃`;
@@ -83,4 +111,5 @@ export function updatePage2(mode, temp, sum, blue, red) {
 
   updateArrows1(temp, sum);
   updateArrows2(temp, sum);
+  updateArrows3(temp, sum);
 }
