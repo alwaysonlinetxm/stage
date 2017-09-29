@@ -1,6 +1,8 @@
 import './index.scss';
 
 const CLIENT_WIDTH = window.innerWidth;
+const COLORS = [ '#061e81', '#1E1B9B', '#1B519B', '#237BC4', '#58b7ee', '#c9dae3', '#f2f3d6', '#edf271', '#EDE780', '#E5B329', '#F7D82C', '#f2962a', '#f24f2a', '#f43205', '#DB061B', '#A51D32', '#8E1925' ];
+
 
 const blueNum = document.querySelector('.page2 .blue .num');
 const redNum = document.querySelector('.page2 .red .num');
@@ -9,6 +11,7 @@ const arrows1 = document.querySelector('.page2 .arrows1');
 const arrows2 = document.querySelector('.page2 .arrows2');
 const arrows3 = document.querySelector('.page2 .arrows3');
 const arrows4 = document.querySelector('.page2 .arrows4');
+const arrows5 = document.querySelector('.page2 .arrows5');
 
 function updateArrows1(temp, sum) {
   const levels = Math.ceil(sum / 10);
@@ -112,6 +115,34 @@ function updateArrows4(temp, sum) {
   }
 }
 
+function updateArrows5(temp, sum) {
+  const intTemp = Math.ceil(temp) - 16;
+  const levels = Math.ceil(sum / 20);
+  const polygons = arrows5.querySelectorAll('svg');
+
+  polygons.forEach(node => arrows5.removeChild(node));
+
+  for (let i = 0; i < levels; i++) {
+    const polygon = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    polygon.setAttribute('width', CLIENT_WIDTH * 0.062);
+    polygon.setAttribute('height', CLIENT_WIDTH * 0.093);
+    polygon.style.top = `-${i * 2}%`;
+    polygon.style.left = `${i * 2}%`;
+
+    polygon.innerHTML = `
+      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:${COLORS[intTemp]}">
+        <animateMotion path="M0,110 q0,-50 20,-100 " begin="0s" dur="1s" rotate="auto" repeatCount="indefinite"/>
+        <animate attributeName="opacity" begin="0s" dur="1s" values="0;1;1;0" repeatCount="indefinite" />
+      </polygon>
+    `;
+    if (i % 2 === 1) {
+      setTimeout(() => arrows5.appendChild(polygon), 500);
+    } else {
+      arrows5.appendChild(polygon);
+    }
+  }
+}
+
 export function updatePage2(mode, temp, sum, blue, red) {
   blueNum.innerHTML = `${blue}℃`;
   redNum.innerHTML = `${red}℃`;
@@ -141,4 +172,5 @@ export function updatePage2(mode, temp, sum, blue, red) {
   updateArrows2(temp, sum);
   updateArrows3(temp, sum);
   updateArrows4(temp, sum);
+  updateArrows5(temp, sum);
 }
