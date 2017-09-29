@@ -1,6 +1,8 @@
 import './libs/reset.scss';
 import './index.scss';
 
+import Util from './libs/util';
+
 import { updatePage1 } from './page1/index';
 import { updatePage2 } from './page2/index';
 
@@ -37,7 +39,10 @@ updatePage2(mode, temp, sum, blue, red);
 
 setInterval(() => {
   // Util.request('S1=&S2=&S3=&S4=&S5=&S6=').then(res => {
-  //
+  //   console.log(res)
+  //   const { S1, S2, S3, S4, S5, S6 } = res;
+  //   updatePage1(temp, sum, dir);
+  //   updatePage2(mode, temp, sum, blue, red);
   // });
   mode = Math.ceil(Math.random() * 7);
   temp = 16 + Math.ceil(16 * Math.random());
