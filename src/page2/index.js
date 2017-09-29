@@ -12,8 +12,9 @@ const arrows2 = document.querySelector('.page2 .arrows2');
 const arrows3 = document.querySelector('.page2 .arrows3');
 const arrows4 = document.querySelector('.page2 .arrows4');
 const arrows5 = document.querySelector('.page2 .arrows5');
+const arrows6 = document.querySelector('.page2 .arrows6');
 
-function updateArrows1(temp, sum) {
+function updateArrows1(sum) {
   const levels = Math.ceil(sum / 10);
   const polygons = arrows1.querySelectorAll('svg');
 
@@ -34,7 +35,7 @@ function updateArrows1(temp, sum) {
   }
 }
 
-function updateArrows2(temp, sum) {
+function updateArrows2(sum) {
   const levels = Math.ceil(sum / 10);
   const polygons = arrows2.querySelectorAll('svg');
 
@@ -61,7 +62,7 @@ function updateArrows2(temp, sum) {
   }
 }
 
-function updateArrows3(temp, sum) {
+function updateArrows3(sum) {
   const levels = Math.ceil(sum / 20);
   const polygons = arrows3.querySelectorAll('svg');
 
@@ -88,7 +89,7 @@ function updateArrows3(temp, sum) {
   }
 }
 
-function updateArrows4(temp, sum) {
+function updateArrows4(sum) {
   const levels = Math.ceil(sum / 20);
   const polygons = arrows4.querySelectorAll('svg');
 
@@ -116,7 +117,6 @@ function updateArrows4(temp, sum) {
 }
 
 function updateArrows5(temp, sum) {
-  const intTemp = Math.ceil(temp) - 16;
   const levels = Math.ceil(sum / 20);
   const polygons = arrows5.querySelectorAll('svg');
 
@@ -130,7 +130,7 @@ function updateArrows5(temp, sum) {
     polygon.style.left = `${i * 2}%`;
 
     polygon.innerHTML = `
-      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:${COLORS[intTemp]}">
+      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:${COLORS[temp]}">
         <animateMotion path="M0,110 q0,-50 20,-100 " begin="0s" dur="1s" rotate="auto" repeatCount="indefinite"/>
         <animate attributeName="opacity" begin="0s" dur="1s" values="0;1;1;0" repeatCount="indefinite" />
       </polygon>
@@ -139,6 +139,33 @@ function updateArrows5(temp, sum) {
       setTimeout(() => arrows5.appendChild(polygon), 500);
     } else {
       arrows5.appendChild(polygon);
+    }
+  }
+}
+
+function updateArrows6(temp, sum) {
+  const levels = Math.ceil(sum / 20);
+  const polygons = arrows6.querySelectorAll('svg');
+
+  polygons.forEach(node => arrows6.removeChild(node));
+
+  for (let i = 0; i < levels; i++) {
+    const polygon = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    polygon.setAttribute('width', CLIENT_WIDTH * 0.062);
+    polygon.setAttribute('height', CLIENT_WIDTH * 0.101);
+    polygon.style.top = `${i * 1}%`;
+    polygon.style.left = `-${i * 3}%`;
+
+    polygon.innerHTML = `
+      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:${COLORS[temp]}">
+        <animateMotion path="M70,120 q-20,-50 -20,-100 " begin="0s" dur="1s" rotate="auto" repeatCount="indefinite"/>
+        <animate attributeName="opacity" begin="0s" dur="1s" values="0;1;1;0" repeatCount="indefinite" />
+      </polygon>
+    `;
+    if (i % 2 === 1) {
+      setTimeout(() => arrows6.appendChild(polygon), 500);
+    } else {
+      arrows6.appendChild(polygon);
     }
   }
 }
@@ -168,9 +195,12 @@ export function updatePage2(mode, temp, sum, blue, red) {
 
   doors[3].style.webkitTransform = `rotate(${45 - ((temp - 16) / 16) * 70}deg)`;
 
-  updateArrows1(temp, sum);
-  updateArrows2(temp, sum);
-  updateArrows3(temp, sum);
-  updateArrows4(temp, sum);
-  updateArrows5(temp, sum);
+  const intTemp = Math.ceil(temp) - 16;
+
+  updateArrows1(sum);
+  updateArrows2(sum);
+  updateArrows3(sum);
+  updateArrows4(sum);
+  updateArrows5(intTemp, sum);
+  updateArrows6(intTemp, sum);
 }
