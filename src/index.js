@@ -27,12 +27,25 @@ forward.addEventListener('click', () => {
   }
 }, false);
 
-Util.request('S1=&S2=&S3=&S4=&S5=&S6=').then(res => {
-  console.log(res)
-  const { S1, S2, S3, S4, S5, S6 } = res;
-  updatePage1(S2, S3, S4);
-  updatePage2(S1, S2, S3, S5, S6);
-});
+// S1：出风方式（吹脸、脚、窗）；
+// S2：出风风量；
+// S3：出风温度；
+// S4：进风方式（内外循环）；
+// S5：蒸发器温度；
+// S6：水温；
+function showData(data) {
+  const { S1, S2, S3, S4, S5, S6 } = data;
+  const mode = S1 * 1;
+  const sum = Math.ceil(S2 * 1);
+  const temp = S3 * 1;
+  const dir = S4 === '1' ? '外循环' : '内循环';
+  const blue = S5 * 1;
+  const red = S6 * 1;
+  updatePage1(temp, sum, dir);
+  updatePage2(mode, temp, sum, blue, red);
+}
+
+Util.request('S1=&S2=&S3=&S4=&S5=&S6=').then(res => showData(res));
 
 // let mode = Math.ceil(Math.random() * 7);
 // let temp = 16 + Math.ceil(16 * Math.random());
@@ -45,18 +58,7 @@ Util.request('S1=&S2=&S3=&S4=&S5=&S6=').then(res => {
 // updatePage2(mode, temp, sum, blue, red);
 
 setInterval(() => {
-  // S1：出风方式（吹脸、脚、窗）；
-  // S2：出风风量；
-  // S3：出风温度；
-  // S4：进风方式（内外循环）；
-  // S5：蒸发器温度；
-  // S6：水温；
-  Util.request('S1=&S2=&S3=&S4=&S5=&S6=').then(res => {
-    console.log(res)
-    const { S1, S2, S3, S4, S5, S6 } = res;
-    updatePage1(S2, S3, S4);
-    updatePage2(S1, S2, S3, S5, S6);
-  });
+  Util.request('S1=&S2=&S3=&S4=&S5=&S6=').then(res => showData(res));
   // mode = Math.ceil(Math.random() * 7);
   // temp = 16 + Math.ceil(16 * Math.random());
   // sum =  Math.ceil(100 * Math.random());
