@@ -59,7 +59,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7b956b6909e28cd85391"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f9bb6a6f649fb5baeaf3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -21934,17 +21934,32 @@ forward.addEventListener('click', function () {
   }
 }, false);
 
-_util2.default.request('S1=&S2=&S3=&S4=&S5=&S6=').then(function (res) {
-  console.log(res);
-  var S1 = res.S1,
-      S2 = res.S2,
-      S3 = res.S3,
-      S4 = res.S4,
-      S5 = res.S5,
-      S6 = res.S6;
+// S1：出风方式（吹脸、脚、窗）；
+// S2：出风风量；
+// S3：出风温度；
+// S4：进风方式（内外循环）；
+// S5：蒸发器温度；
+// S6：水温；
+function showData(data) {
+  var S1 = data.S1,
+      S2 = data.S2,
+      S3 = data.S3,
+      S4 = data.S4,
+      S5 = data.S5,
+      S6 = data.S6;
 
-  (0, _index.updatePage1)(S2, S3, S4);
-  (0, _index2.updatePage2)(S1, S2, S3, S5, S6);
+  var mode = S1 * 1;
+  var sum = Math.ceil(S2 * 1);
+  var temp = S3 * 1;
+  var dir = S4 === '1' ? '外循环' : '内循环';
+  var blue = S5 * 1;
+  var red = S6 * 1;
+  (0, _index.updatePage1)(temp, sum, dir);
+  (0, _index2.updatePage2)(mode, temp, sum, blue, red);
+}
+
+_util2.default.request('S1=&S2=&S3=&S4=&S5=&S6=').then(function (res) {
+  return showData(res);
 });
 
 // let mode = Math.ceil(Math.random() * 7);
@@ -21958,23 +21973,8 @@ _util2.default.request('S1=&S2=&S3=&S4=&S5=&S6=').then(function (res) {
 // updatePage2(mode, temp, sum, blue, red);
 
 setInterval(function () {
-  // S1：出风方式（吹脸、脚、窗）；
-  // S2：出风风量；
-  // S3：出风温度；
-  // S4：进风方式（内外循环）；
-  // S5：蒸发器温度；
-  // S6：水温；
   _util2.default.request('S1=&S2=&S3=&S4=&S5=&S6=').then(function (res) {
-    console.log(res);
-    var S1 = res.S1,
-        S2 = res.S2,
-        S3 = res.S3,
-        S4 = res.S4,
-        S5 = res.S5,
-        S6 = res.S6;
-
-    (0, _index.updatePage1)(S2, S3, S4);
-    (0, _index2.updatePage2)(S1, S2, S3, S5, S6);
+    return showData(res);
   });
   // mode = Math.ceil(Math.random() * 7);
   // temp = 16 + Math.ceil(16 * Math.random());
@@ -44684,4 +44684,4 @@ module.exports = __webpack_require__.p + "images/bg-638bac67.jpg";
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.7b956b6909e28cd85391.js.map
+//# sourceMappingURL=bundle.f9bb6a6f649fb5baeaf3.js.map
