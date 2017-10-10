@@ -59,7 +59,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "add69612bc22adb67916"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7b956b6909e28cd85391"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -21934,38 +21934,63 @@ forward.addEventListener('click', function () {
   }
 }, false);
 
-var mode = Math.ceil(Math.random() * 7);
-var temp = 16 + Math.ceil(16 * Math.random());
-var sum = Math.ceil(100 * Math.random());
-var dir = '外循环';
-var blue = -4;
-var red = 85;
+_util2.default.request('S1=&S2=&S3=&S4=&S5=&S6=').then(function (res) {
+  console.log(res);
+  var S1 = res.S1,
+      S2 = res.S2,
+      S3 = res.S3,
+      S4 = res.S4,
+      S5 = res.S5,
+      S6 = res.S6;
 
-(0, _index.updatePage1)(temp, sum, dir);
-(0, _index2.updatePage2)(mode, temp, sum, blue, red);
+  (0, _index.updatePage1)(S2, S3, S4);
+  (0, _index2.updatePage2)(S1, S2, S3, S5, S6);
+});
+
+// let mode = Math.ceil(Math.random() * 7);
+// let temp = 16 + Math.ceil(16 * Math.random());
+// let sum =  Math.ceil(100 * Math.random());
+// let dir = '外循环';
+// let blue = -4;
+// let red = 85;
+//
+// updatePage1(temp, sum, dir);
+// updatePage2(mode, temp, sum, blue, red);
 
 setInterval(function () {
-  // Util.request('S1=&S2=&S3=&S4=&S5=&S6=').then(res => {
-  //   console.log(res)
-  //   const { S1, S2, S3, S4, S5, S6 } = res;
-  //   updatePage1(temp, sum, dir);
-  //   updatePage2(mode, temp, sum, blue, red);
-  // });
-  mode = Math.ceil(Math.random() * 7);
-  temp = 16 + Math.ceil(16 * Math.random());
-  sum = Math.ceil(100 * Math.random());
+  // S1：出风方式（吹脸、脚、窗）；
+  // S2：出风风量；
+  // S3：出风温度；
+  // S4：进风方式（内外循环）；
+  // S5：蒸发器温度；
+  // S6：水温；
+  _util2.default.request('S1=&S2=&S3=&S4=&S5=&S6=').then(function (res) {
+    console.log(res);
+    var S1 = res.S1,
+        S2 = res.S2,
+        S3 = res.S3,
+        S4 = res.S4,
+        S5 = res.S5,
+        S6 = res.S6;
 
-  if (dir === '内循环') {
-    dir = '外循环';
-  } else {
-    dir = '内循环';
-  }
-
-  blue = Math.ceil(Math.random() * 125) - 40;
-  red = Math.ceil(Math.random() * 125) - 40;
-
-  (0, _index.updatePage1)(temp, sum, dir);
-  (0, _index2.updatePage2)(mode, temp, sum, blue, red);
+    (0, _index.updatePage1)(S2, S3, S4);
+    (0, _index2.updatePage2)(S1, S2, S3, S5, S6);
+  });
+  // mode = Math.ceil(Math.random() * 7);
+  // temp = 16 + Math.ceil(16 * Math.random());
+  // sum =  Math.ceil(100 * Math.random());
+  //
+  // if (dir === '内循环') {
+  //   dir = '外循环';
+  // } else {
+  //   dir = '内循环';
+  // }
+  //
+  // blue = Math.ceil(Math.random() * 125) - 40;
+  // red = Math.ceil(Math.random() * 125) - 40;
+  //
+  // updatePage1(temp, sum, dir);
+  // updatePage2(mode, temp, sum, blue, red);
 }, 10000);
 
 /***/ }),
@@ -44659,4 +44684,4 @@ module.exports = __webpack_require__.p + "images/bg-638bac67.jpg";
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.add69612bc22adb67916.js.map
+//# sourceMappingURL=bundle.7b956b6909e28cd85391.js.map
