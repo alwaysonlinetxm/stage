@@ -59,7 +59,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f9bb6a6f649fb5baeaf3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8f4043c909c9bc350646"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -21991,7 +21991,7 @@ setInterval(function () {
   //
   // updatePage1(temp, sum, dir);
   // updatePage2(mode, temp, sum, blue, red);
-}, 10000);
+}, 1000);
 
 /***/ }),
 /* 106 */
@@ -44684,4 +44684,4 @@ module.exports = __webpack_require__.p + "images/bg-638bac67.jpg";
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.f9bb6a6f649fb5baeaf3.js.map
+//# sourceMappingURL=bundle.8f4043c909c9bc350646.js.map

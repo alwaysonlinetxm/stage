@@ -74,4 +74,4 @@ setInterval(() => {
   //
   // updatePage1(temp, sum, dir);
   // updatePage2(mode, temp, sum, blue, red);
-}, 10000);
+}, 1000);
