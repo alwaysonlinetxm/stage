@@ -59,7 +59,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8f4043c909c9bc350646"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c34285ac3510b416816f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -21954,13 +21954,19 @@ function showData(data) {
   var dir = S4 === '1' ? '外循环' : '内循环';
   var blue = S5 * 1;
   var red = S6 * 1;
-  (0, _index.updatePage1)(temp, sum, dir);
+  (0, _index.updatePage1)(mode, temp, sum, dir);
   (0, _index2.updatePage2)(mode, temp, sum, blue, red);
 }
 
 _util2.default.request('S1=&S2=&S3=&S4=&S5=&S6=').then(function (res) {
   return showData(res);
 });
+
+setInterval(function () {
+  _util2.default.request('S1=&S2=&S3=&S4=&S5=&S6=').then(function (res) {
+    return showData(res);
+  });
+}, 10000);
 
 // let mode = Math.ceil(Math.random() * 7);
 // let temp = 16 + Math.ceil(16 * Math.random());
@@ -21969,29 +21975,26 @@ _util2.default.request('S1=&S2=&S3=&S4=&S5=&S6=').then(function (res) {
 // let blue = -4;
 // let red = 85;
 //
-// updatePage1(temp, sum, dir);
+// updatePage1(mode, temp, sum, dir);
 // updatePage2(mode, temp, sum, blue, red);
-
-setInterval(function () {
-  _util2.default.request('S1=&S2=&S3=&S4=&S5=&S6=').then(function (res) {
-    return showData(res);
-  });
-  // mode = Math.ceil(Math.random() * 7);
-  // temp = 16 + Math.ceil(16 * Math.random());
-  // sum =  Math.ceil(100 * Math.random());
-  //
-  // if (dir === '内循环') {
-  //   dir = '外循环';
-  // } else {
-  //   dir = '内循环';
-  // }
-  //
-  // blue = Math.ceil(Math.random() * 125) - 40;
-  // red = Math.ceil(Math.random() * 125) - 40;
-  //
-  // updatePage1(temp, sum, dir);
-  // updatePage2(mode, temp, sum, blue, red);
-}, 1000);
+//
+// setInterval(() => {
+//   mode = Math.ceil(Math.random() * 7);
+//   temp = 16 + Math.ceil(16 * Math.random());
+//   sum =  Math.ceil(100 * Math.random());
+//
+//   if (dir === '内循环') {
+//     dir = '外循环';
+//   } else {
+//     dir = '内循环';
+//   }
+//
+//   blue = Math.ceil(Math.random() * 125) - 40;
+//   red = Math.ceil(Math.random() * 125) - 40;
+//
+//   updatePage1(mode, temp, sum, dir);
+//   updatePage2(mode, temp, sum, blue, red);
+// }, 10000);
 
 /***/ }),
 /* 106 */
@@ -23240,14 +23243,18 @@ function setArrow(temp) {
   });
 }
 
-function updatePage1(temp, sum, dir) {
+function updatePage1(mode, temp, sum, dir) {
   var intTemp = Math.ceil(temp) - 16;
 
   setArrow(temp);
+  particle1.particles.visible = mode === 1 || mode === 4 || mode === 5 || mode === 7;
   particle1.setColor(COLORS[intTemp], 1);
   particle1.setSum(sum * 10, 5);
+  particle2.particles.visible = mode === 2 || mode === 4 || mode === 6 || mode === 7;
   particle2.setColor(COLORS[intTemp], 1);
   particle2.setSum(sum * 20, 5);
+  particle3.particles.visible = mode === 3 || mode === 5 || mode === 6 || mode === 7;
+  console.log(particle1.particles.visible, particle2.particles.visible, particle3.particles.visible);
   particle3.setColor(COLORS[intTemp], 1);
   particle3.setSum(sum * 16, 5);
   tempDom.innerHTML = '\u8F66\u5185\u6E29\u5EA6\uFF1A' + temp + '\u2103';
@@ -44684,4 +44691,4 @@ module.exports = __webpack_require__.p + "images/bg-638bac67.jpg";
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.8f4043c909c9bc350646.js.map
+//# sourceMappingURL=bundle.c34285ac3510b416816f.js.map
