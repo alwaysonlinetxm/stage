@@ -107,7 +107,6 @@ export function updatePage1(mode, temp, sum, dir) {
   particle2.setColor(COLORS[intTemp], 1);
   particle2.setSum(sum * 20, 5);
   particle3.particles.visible = mode === 3 || mode === 5 || mode === 6 || mode === 7;
-  console.log(particle1.particles.visible, particle2.particles.visible, particle3.particles.visible)
   particle3.setColor(COLORS[intTemp], 1);
   particle3.setSum(sum * 16, 5);
   tempDom.innerHTML = `车内温度：${temp}℃`;

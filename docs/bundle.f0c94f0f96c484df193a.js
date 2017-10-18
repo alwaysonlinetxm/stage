@@ -59,7 +59,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c34285ac3510b416816f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f0c94f0f96c484df193a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -23254,7 +23254,6 @@ function updatePage1(mode, temp, sum, dir) {
   particle2.setColor(COLORS[intTemp], 1);
   particle2.setSum(sum * 20, 5);
   particle3.particles.visible = mode === 3 || mode === 5 || mode === 6 || mode === 7;
-  console.log(particle1.particles.visible, particle2.particles.visible, particle3.particles.visible);
   particle3.setColor(COLORS[intTemp], 1);
   particle3.setSum(sum * 16, 5);
   tempDom.innerHTML = '\u8F66\u5185\u6E29\u5EA6\uFF1A' + temp + '\u2103';
@@ -44623,20 +44622,26 @@ function updatePage2(mode, temp, sum, blue, red) {
 
   if (mode === 2 || mode === 4 || mode === 6 || mode === 7) {
     doors[0].style.webkitTransform = 'rotate(-60deg)';
+    arrows7.style.display = 'block';
   } else {
     doors[0].style.webkitTransform = 'rotate(0deg)';
+    arrows7.style.display = 'none';
   }
 
   if (mode === 1 || mode === 4 || mode === 5 || mode === 7) {
     doors[1].style.webkitTransform = 'rotate(90deg)';
+    arrows6.style.display = 'block';
   } else {
     doors[1].style.webkitTransform = 'rotate(0deg)';
+    arrows6.style.display = 'none';
   }
 
   if (mode === 3 || mode === 5 || mode === 6 || mode === 7) {
     doors[2].style.webkitTransform = 'rotate(90deg)';
+    arrows5.style.display = 'block';
   } else {
     doors[2].style.webkitTransform = 'rotate(40deg)';
+    arrows5.style.display = 'none';
   }
 
   doors[3].style.webkitTransform = 'rotate(' + (45 - (temp - 16) / 16 * 70) + 'deg)';
@@ -44691,4 +44696,4 @@ module.exports = __webpack_require__.p + "images/bg-638bac67.jpg";
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.c34285ac3510b416816f.js.map
+//# sourceMappingURL=bundle.f0c94f0f96c484df193a.js.map

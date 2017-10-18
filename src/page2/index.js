@@ -205,20 +205,26 @@ export function updatePage2(mode, temp, sum, blue, red) {
 
   if (mode === 2 || mode === 4 || mode === 6 || mode === 7) {
     doors[0].style.webkitTransform = 'rotate(-60deg)';
+    arrows7.style.display = 'block';
   } else {
     doors[0].style.webkitTransform = 'rotate(0deg)';
+    arrows7.style.display = 'none';
   }
 
   if (mode === 1 || mode === 4 || mode === 5 || mode === 7) {
     doors[1].style.webkitTransform = 'rotate(90deg)';
+    arrows6.style.display = 'block';
   } else {
     doors[1].style.webkitTransform = 'rotate(0deg)';
+    arrows6.style.display = 'none';
   }
 
   if (mode === 3 || mode === 5 || mode === 6 || mode === 7) {
     doors[2].style.webkitTransform = 'rotate(90deg)';
+    arrows5.style.display = 'block';
   } else {
     doors[2].style.webkitTransform = 'rotate(40deg)';
+    arrows5.style.display = 'none';
   }
 
   doors[3].style.webkitTransform = `rotate(${45 - ((temp - 16) / 16) * 70}deg)`;
