@@ -27,6 +27,7 @@ forward.addEventListener('click', () => {
   }
 }, false);
 
+let lastData = '';
 // S1：出风方式（吹脸、脚、窗）；
 // S2：出风风量；
 // S3：出风温度；
@@ -34,6 +35,11 @@ forward.addEventListener('click', () => {
 // S5：蒸发器温度；
 // S6：水温；
 function showData(data) {
+  if (lastData !== JSON.stringify(data)) {
+    lastData = JSON.stringify(data);
+  } else {
+    return
+  }
   const { S1, S2, S3, S4, S5, S6 } = data;
   const mode = S1 * 1;
   const sum = Math.ceil(S2 * 1);

@@ -29,7 +29,7 @@ bg.height = CLIENT_WIDTH * 1080 / 1400;
 app.stage.addChild(bg);
 
 const particle1 = new Particle({
-  width: - CLIENT_WIDTH * 0.18,
+  width: - CLIENT_WIDTH * 0.12,
   height: 20,
   k: 0.5,
   w: 30,
@@ -37,9 +37,9 @@ const particle1 = new Particle({
   color: 0xEDE780
 });
 
-// particle1.particles.rotation = Math.PI * 0.03;
+particle1.particles.rotation = Math.PI * -0.2;
 particle1.particles.x = CLIENT_WIDTH * 0.35;
-particle1.particles.y = CLIENT_HEIGHT * 0.47;
+particle1.particles.y = CLIENT_HEIGHT * 0.4;
 app.stage.addChild(particle1.particles);
 
 const particle2= new Particle({
@@ -100,10 +100,10 @@ export function updatePage1(mode, temp, sum, dir) {
   const intTemp = Math.ceil(temp) - 16;
 
   setArrow(temp);
-  particle1.particles.visible = mode === 1 || mode === 4 || mode === 5 || mode === 7;
+  particle1.particles.visible = mode === 2 || mode === 4 || mode === 6 || mode === 7;
   particle1.setColor(COLORS[intTemp], 1);
   particle1.setSum(sum * 10, 5);
-  particle2.particles.visible = mode === 2 || mode === 4 || mode === 6 || mode === 7;
+  particle2.particles.visible = mode === 1 || mode === 4 || mode === 5 || mode === 7;
   particle2.setColor(COLORS[intTemp], 1);
   particle2.setSum(sum * 20, 5);
   particle3.particles.visible = mode === 3 || mode === 5 || mode === 6 || mode === 7;
