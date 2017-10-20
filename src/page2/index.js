@@ -203,7 +203,7 @@ export function updatePage2(mode, temp, sum, blue, red) {
   redNum.innerHTML = `${red}℃`;
 
 
-  if (mode === 2 || mode === 4 || mode === 6 || mode === 7) {
+  if (mode === 1 || mode === 2 || mode === 3 || mode === 7 || mode === 8) {
     doors[0].style.webkitTransform = 'rotate(-60deg)';
     arrows7.style.display = 'block';
   } else {
@@ -211,7 +211,7 @@ export function updatePage2(mode, temp, sum, blue, red) {
     arrows7.style.display = 'none';
   }
 
-  if (mode === 1 || mode === 4 || mode === 5 || mode === 7) {
+  if (mode === 1 || mode === 3 || mode === 4 || mode === 5 || mode === 8) {
     doors[1].style.webkitTransform = 'rotate(90deg)';
     arrows6.style.display = 'block';
   } else {
@@ -219,7 +219,7 @@ export function updatePage2(mode, temp, sum, blue, red) {
     arrows6.style.display = 'none';
   }
 
-  if (mode === 3 || mode === 5 || mode === 6 || mode === 7) {
+  if (mode === 5 || mode === 6 || mode === 7 || mode === 8 || mode === 9) {
     doors[2].style.webkitTransform = 'rotate(90deg)';
     arrows5.style.display = 'block';
   } else {

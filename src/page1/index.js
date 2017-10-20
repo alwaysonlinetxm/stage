@@ -83,6 +83,7 @@ const sumDom = document.querySelector('#p1-sum');
 const dirDom = document.querySelector('#p1-dir');
 const inside = document.querySelector('.page1 .inside');
 const outside = document.querySelector('.page1 .outside');
+const auto = document.querySelector('.page1 .auto');
 
 function setArrow(temp) {
   const deg = (temp - 16) * 15 - 120;
@@ -100,24 +101,23 @@ export function updatePage1(mode, temp, sum, dir) {
   const intTemp = Math.ceil(temp) - 16;
 
   setArrow(temp);
-  particle1.particles.visible = mode === 2 || mode === 4 || mode === 6 || mode === 7;
+  // floor
+  particle1.particles.visible = mode === 1 || mode === 2 || mode === 3 || mode === 7 || mode === 8;
   particle1.setColor(COLORS[intTemp], 1);
   particle1.setSum(sum * 10, 5);
-  particle2.particles.visible = mode === 1 || mode === 4 || mode === 5 || mode === 7;
+  // vent
+  particle2.particles.visible = mode === 1 || mode === 3 || mode === 4 || mode === 5 || mode === 8;
   particle2.setColor(COLORS[intTemp], 1);
   particle2.setSum(sum * 20, 5);
-  particle3.particles.visible = mode === 3 || mode === 5 || mode === 6 || mode === 7;
+  // shield
+  particle3.particles.visible = mode === 5 || mode === 6 || mode === 7 || mode === 8 || mode === 9;
   particle3.setColor(COLORS[intTemp], 1);
   particle3.setSum(sum * 16, 5);
   tempDom.innerHTML = `车内温度：${temp}℃`;
   sumDom.innerHTML = `当前风量：${sum}%`;
   dirDom.innerHTML = `进风方式：${dir}`;
 
-  if (dir === '内循环') {
-    inside.style.display = 'block';
-    outside.style.display = 'none';
-  } else {
-    inside.style.display = 'none';
-    outside.style.display = 'block';
-  }
+  auto.style.display = dir === '自动循环' ? 'block' : 'none';
+  inside.style.display = dir === '内循环' ? 'block' : 'none';
+  outside.style.display = dir === '外循环' ? 'block' : 'none';
 }

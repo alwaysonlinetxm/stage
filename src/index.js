@@ -44,7 +44,7 @@ function showData(data) {
   const mode = S1 * 1;
   const sum = Math.ceil(S2 * 1);
   const temp = S3 * 1;
-  const dir = S4 === '1' ? '外循环' : '内循环';
+  const dir = S4 === '1' ? '自动循环' : S4 === '2' ? '内循环' : '外循环';
   const blue = S5 * 1;
   const red = S6 * 1;
   updatePage1(mode, temp, sum, dir);

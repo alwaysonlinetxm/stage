@@ -59,7 +59,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "68b63ff41b4a7c6d8d61"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7bdd20261372e9950696"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -21967,7 +21967,7 @@ function showData(data) {
   var mode = S1 * 1;
   var sum = Math.ceil(S2 * 1);
   var temp = S3 * 1;
-  var dir = S4 === '1' ? '外循环' : '内循环';
+  var dir = S4 === '1' ? '自动循环' : S4 === '2' ? '内循环' : '外循环';
   var blue = S5 * 1;
   var red = S6 * 1;
   (0, _index.updatePage1)(mode, temp, sum, dir);
@@ -23240,6 +23240,7 @@ var sumDom = document.querySelector('#p1-sum');
 var dirDom = document.querySelector('#p1-dir');
 var inside = document.querySelector('.page1 .inside');
 var outside = document.querySelector('.page1 .outside');
+var auto = document.querySelector('.page1 .auto');
 
 function setArrow(temp) {
   var deg = (temp - 16) * 15 - 120;
@@ -23257,26 +23258,25 @@ function updatePage1(mode, temp, sum, dir) {
   var intTemp = Math.ceil(temp) - 16;
 
   setArrow(temp);
-  particle1.particles.visible = mode === 2 || mode === 4 || mode === 6 || mode === 7;
+  // floor
+  particle1.particles.visible = mode === 1 || mode === 2 || mode === 3 || mode === 7 || mode === 8;
   particle1.setColor(COLORS[intTemp], 1);
   particle1.setSum(sum * 10, 5);
-  particle2.particles.visible = mode === 1 || mode === 4 || mode === 5 || mode === 7;
+  // vent
+  particle2.particles.visible = mode === 1 || mode === 3 || mode === 4 || mode === 5 || mode === 8;
   particle2.setColor(COLORS[intTemp], 1);
   particle2.setSum(sum * 20, 5);
-  particle3.particles.visible = mode === 3 || mode === 5 || mode === 6 || mode === 7;
+  // shield
+  particle3.particles.visible = mode === 5 || mode === 6 || mode === 7 || mode === 8 || mode === 9;
   particle3.setColor(COLORS[intTemp], 1);
   particle3.setSum(sum * 16, 5);
   tempDom.innerHTML = '\u8F66\u5185\u6E29\u5EA6\uFF1A' + temp + '\u2103';
   sumDom.innerHTML = '\u5F53\u524D\u98CE\u91CF\uFF1A' + sum + '%';
   dirDom.innerHTML = '\u8FDB\u98CE\u65B9\u5F0F\uFF1A' + dir;
 
-  if (dir === '内循环') {
-    inside.style.display = 'block';
-    outside.style.display = 'none';
-  } else {
-    inside.style.display = 'none';
-    outside.style.display = 'block';
-  }
+  auto.style.display = dir === '自动循环' ? 'block' : 'none';
+  inside.style.display = dir === '内循环' ? 'block' : 'none';
+  outside.style.display = dir === '外循环' ? 'block' : 'none';
 }
 
 /***/ }),
@@ -44630,7 +44630,7 @@ function updatePage2(mode, temp, sum, blue, red) {
   blueNum.innerHTML = blue + '\u2103';
   redNum.innerHTML = red + '\u2103';
 
-  if (mode === 2 || mode === 4 || mode === 6 || mode === 7) {
+  if (mode === 1 || mode === 2 || mode === 3 || mode === 7 || mode === 8) {
     doors[0].style.webkitTransform = 'rotate(-60deg)';
     arrows7.style.display = 'block';
   } else {
@@ -44638,7 +44638,7 @@ function updatePage2(mode, temp, sum, blue, red) {
     arrows7.style.display = 'none';
   }
 
-  if (mode === 1 || mode === 4 || mode === 5 || mode === 7) {
+  if (mode === 1 || mode === 3 || mode === 4 || mode === 5 || mode === 8) {
     doors[1].style.webkitTransform = 'rotate(90deg)';
     arrows6.style.display = 'block';
   } else {
@@ -44646,7 +44646,7 @@ function updatePage2(mode, temp, sum, blue, red) {
     arrows6.style.display = 'none';
   }
 
-  if (mode === 3 || mode === 5 || mode === 6 || mode === 7) {
+  if (mode === 5 || mode === 6 || mode === 7 || mode === 8 || mode === 9) {
     doors[2].style.webkitTransform = 'rotate(90deg)';
     arrows5.style.display = 'block';
   } else {
@@ -44706,4 +44706,4 @@ module.exports = __webpack_require__.p + "images/bg-df8bbc78.jpg";
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.68b63ff41b4a7c6d8d61.js.map
+//# sourceMappingURL=bundle.7bdd20261372e9950696.js.map
