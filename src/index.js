@@ -11,11 +11,13 @@ const CLIENT_WIDTH = window.innerWidth;
 const box = document.querySelector('.box');
 const back = document.querySelector('.back');
 const forward = document.querySelector('.forward');
+const title = document.querySelector('.title');
 let curIndex = 0;
 
 back.addEventListener('click', () => {
   if (curIndex > 0) {
     curIndex--;
+    showTitle(curIndex);
     box.style.webkitTransform = `translateX(-${curIndex * CLIENT_WIDTH}px)`;
   }
 }, false);
@@ -23,9 +25,18 @@ back.addEventListener('click', () => {
 forward.addEventListener('click', () => {
   if (curIndex < 3) {
     curIndex++;
+    showTitle(curIndex);
     box.style.webkitTransform = `translateX(-${curIndex * CLIENT_WIDTH}px)`;
   }
 }, false);
+
+function showTitle(index) {
+  if (index === 0 || index === 1) {
+    title.style.display = 'block';
+  } else {
+    title.style.display = 'none';
+  }
+}
 
 let lastData = '';
 // S1：出风方式（吹脸、脚、窗）；

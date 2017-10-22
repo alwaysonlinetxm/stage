@@ -59,7 +59,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7bdd20261372e9950696"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "894195fbb3d0507a6d11"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -21928,11 +21928,13 @@ var CLIENT_WIDTH = window.innerWidth;
 var box = document.querySelector('.box');
 var back = document.querySelector('.back');
 var forward = document.querySelector('.forward');
+var title = document.querySelector('.title');
 var curIndex = 0;
 
 back.addEventListener('click', function () {
   if (curIndex > 0) {
     curIndex--;
+    showTitle(curIndex);
     box.style.webkitTransform = 'translateX(-' + curIndex * CLIENT_WIDTH + 'px)';
   }
 }, false);
@@ -21940,9 +21942,18 @@ back.addEventListener('click', function () {
 forward.addEventListener('click', function () {
   if (curIndex < 3) {
     curIndex++;
+    showTitle(curIndex);
     box.style.webkitTransform = 'translateX(-' + curIndex * CLIENT_WIDTH + 'px)';
   }
 }, false);
+
+function showTitle(index) {
+  if (index === 0 || index === 1) {
+    title.style.display = 'block';
+  } else {
+    title.style.display = 'none';
+  }
+}
 
 var lastData = '';
 // S1：出风方式（吹脸、脚、窗）；
@@ -44706,4 +44717,4 @@ module.exports = __webpack_require__.p + "images/bg-df8bbc78.jpg";
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.7bdd20261372e9950696.js.map
+//# sourceMappingURL=bundle.894195fbb3d0507a6d11.js.map
