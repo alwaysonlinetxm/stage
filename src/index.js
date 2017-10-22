@@ -5,6 +5,7 @@ import Util from './libs/util';
 
 import { updatePage1 } from './page1/index';
 import { updatePage2 } from './page2/index';
+import { updatePage3 } from './page3/index';
 
 
 const CLIENT_WIDTH = window.innerWidth;

@@ -1,0 +1,84 @@
+@import '../libs/common.scss';
+
+.page3 {
+  .container {
+    position: relative;
+    height: 100%;
+    background: url(./images/bg.png) no-repeat center;
+    background-size: 100% 100%;
+  }
+
+  .top-list {
+    position: absolute;
+    top: 6%;
+    width: 100%;
+    @include flex(horizontal, center, center);
+  }
+
+  .top-item {
+    width: 14.6%;
+    padding-bottom: 7.6%;
+
+    &.blank {
+      background: url(./images/blank.png) no-repeat center;
+      background-size: 38%;
+    }
+
+    &.slash {
+      background: url(./images/slash.png) no-repeat center;
+      background-size: 38%;
+    }
+
+    &.A {
+      background: url(./images/A.png) no-repeat center;
+      background-size: 38%;
+    }
+
+    &.inside {
+      background: url(./images/inside.png) no-repeat center;
+      background-size: 54%;
+    }
+
+    &.outside {
+      background: url(./images/outside.png) no-repeat center;
+      background-size: 54%;
+    }
+
+    &.auto {
+      background: url(./images/auto.png) no-repeat center;
+      background-size: 40%;
+    }
+
+    &.ion {
+      background: url(./images/ion.png) no-repeat center;
+      background-size: 40%;
+    }
+  }
+
+  .split {
+    width: 0.5%;
+    padding-bottom: 7.6%;
+    background: url(./images/split.png) no-repeat center;
+    background-size: contain;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 8%;
+    background: url(./images/footer.png) no-repeat center;
+    background-size: contain;
+  }
+
+  .sync {
+    position: absolute;
+    bottom: 0;
+    left: 51%;
+    width: 37%;
+    padding-bottom: 8%;
+    transform: translateX(-50%);
+    background-color: transparent;
+  }
+}
