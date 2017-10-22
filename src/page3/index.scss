@@ -142,6 +142,48 @@
     }
   }
 
+  .wind {
+    position: absolute;
+    top: 29%;
+    width: 100%;
+    @include flex(horizontal, center, end);
+  }
+
+  .minus,
+  .plus {
+    width: 2.3%;
+    padding-bottom: 2.3%;
+  }
+
+  .minus {
+    margin-right: 2%;
+    background: url(./images/-.png) no-repeat center;
+    background-size: contain;
+  }
+
+  .plus {
+    margin-left: 2%;
+    background: url(./images/+.png) no-repeat center;
+    background-size: contain;
+  }
+
+  .sum-bg {
+    position: relative;
+    width: 45%;
+    padding-bottom: 11.4%;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .sum {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    padding-bottom: 11.4%;
+    background-color: #fff;
+  }
+
   .footer {
     position: absolute;
     bottom: 0;
