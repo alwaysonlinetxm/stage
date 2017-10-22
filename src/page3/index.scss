@@ -184,6 +184,65 @@
     background-color: #fff;
   }
 
+  .down-list {
+    position: absolute;
+    top: 66%;
+    width: 100%;
+    @include flex(horizontal, center, center);
+  }
+
+  .down-item {
+    margin: 0 4%;
+
+    &:nth-of-type(1) {
+      width: 4.3%;
+      padding-bottom: 5.3%;
+      background: url(./images/dir1.png) no-repeat center;
+      background-size: contain;
+
+      &.on {
+        background: url(./images/dir1_on.png) no-repeat center;
+        background-size: contain;
+      }
+    }
+
+    &:nth-of-type(2) {
+      width: 4.9%;
+      padding-bottom: 5.3%;
+      background: url(./images/dir2.png) no-repeat center;
+      background-size: contain;
+
+      &.on {
+        background: url(./images/dir2_on.png) no-repeat center;
+        background-size: contain;
+      }
+    }
+
+    &:nth-of-type(3) {
+      width: 4.9%;
+      padding-bottom: 5.3%;
+      background: url(./images/dir3.png) no-repeat center;
+      background-size: contain;
+
+      &.on {
+        background: url(./images/dir3_on.png) no-repeat center;
+        background-size: contain;
+      }
+    }
+
+    &:nth-of-type(4) {
+      width: 4.9%;
+      padding-bottom: 5.5%;
+      background: url(./images/dir4.png) no-repeat center;
+      background-size: contain;
+
+      &.on {
+        background: url(./images/dir4_on.png) no-repeat center;
+        background-size: contain;
+      }
+    }
+  }
+
   .footer {
     position: absolute;
     bottom: 0;
