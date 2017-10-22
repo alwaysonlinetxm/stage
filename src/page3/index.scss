@@ -62,6 +62,74 @@
     background-size: contain;
   }
 
+  .left-temp,
+  .right-temp {
+    position: absolute;
+    top: 50%;
+    width: 20%;
+    padding-bottom: 16.8%;
+    background: url(./images/temp_bg.png) no-repeat center;
+    background-size: contain;
+    transform: translateY(-50%);
+  }
+
+  .left-temp {
+    left: 0;
+
+    .up-arrow,
+    .down-arrow {
+      right: 40%;
+    }
+
+    .temp {
+      left: 54%;
+    }
+  }
+
+  .right-temp {
+    right: 0;
+
+    .up-arrow,
+    .down-arrow {
+      left: 40%;
+    }
+
+    .temp {
+      left: 46%;
+    }
+  }
+
+  .up-arrow,
+  .down-arrow {
+    position: absolute;
+    width: 12.5%;
+    padding-bottom: 7%;
+  }
+
+  .up-arrow {
+    top: -11%;
+    background: url(./images/up-arrow.png) no-repeat center;
+    background-size: contain;
+  }
+
+  .down-arrow {
+    bottom: -11%;
+    background: url(./images/down-arrow.png) no-repeat center;
+    background-size: contain;
+  }
+
+  .temp {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    font-size: 100px;
+    transform: translate(-50%, -50%);
+
+    @media screen and (min-width: 1680px) {
+      font-size: 160px;
+    }
+  }
+
   .footer {
     position: absolute;
     bottom: 0;

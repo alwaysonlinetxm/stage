@@ -88,8 +88,8 @@ $arrowWidth: 3%;
   vertical-align: bottom;
 }
 
-.page3 {
-  background-color: #0f0;
+.page2 {
+  @include gradient(#021126, #172645);
 }
 
 .page4 {
