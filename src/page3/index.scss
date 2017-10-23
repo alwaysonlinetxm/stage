@@ -47,11 +47,19 @@
     &.auto {
       background: url(./images/auto.png) no-repeat center;
       background-size: 40%;
+
+      &.on {
+        background-image: url(./images/auto_on.png);
+      }
     }
 
     &.ion {
       background: url(./images/ion.png) no-repeat center;
       background-size: 40%;
+
+      &.on {
+        background-image: url(./images/ion_on.png);
+      }
     }
   }
 
@@ -171,7 +179,8 @@
     position: relative;
     width: 45%;
     padding-bottom: 11.4%;
-    background-color: rgba(255, 255, 255, 0.3);
+    background: url(./images/sum_bg.png) no-repeat center;
+    background-size: contain;
   }
 
   .sum {
@@ -180,8 +189,8 @@
     left: 0;
     width: 50%;
     height: 100%;
-    padding-bottom: 11.4%;
-    background-color: #fff;
+    background: url(./images/sum.png) no-repeat 0 0;
+    background-size: cover;
   }
 
   .down-list {
@@ -201,8 +210,7 @@
       background-size: contain;
 
       &.on {
-        background: url(./images/dir1_on.png) no-repeat center;
-        background-size: contain;
+        background-image: url(./images/dir1_on.png);
       }
     }
 
@@ -213,8 +221,7 @@
       background-size: contain;
 
       &.on {
-        background: url(./images/dir2_on.png) no-repeat center;
-        background-size: contain;
+        background-image: url(./images/dir2_on.png);
       }
     }
 
@@ -225,8 +232,7 @@
       background-size: contain;
 
       &.on {
-        background: url(./images/dir3_on.png) no-repeat center;
-        background-size: contain;
+        background-image: url(./images/dir3_on.png);
       }
     }
 
@@ -237,8 +243,7 @@
       background-size: contain;
 
       &.on {
-        background: url(./images/dir4_on.png) no-repeat center;
-        background-size: contain;
+        background-image: url(./images/dir4_on.png);
       }
     }
   }
