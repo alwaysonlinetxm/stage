@@ -163,6 +163,22 @@
     }
   }
 
+  .auto {
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    width: 146px;
+    height: 142px;
+    background: url(./images/outside.png) no-repeat;
+    background-size: 146px 142px;
+
+    @media screen and (min-width: 1680px) {
+      width: 218px;
+      height: 211px;
+      background-size: 218px 211px;
+    }
+  }
+
   .canvas {
     width: 100%;
     height: 100%;
