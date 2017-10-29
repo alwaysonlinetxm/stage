@@ -286,8 +286,13 @@
     left: 0;
     width: 100%;
     padding-bottom: 8%;
-    background: url(./images/footer.png) no-repeat center;
-    background-size: contain;
+    // background: url(./images/footer.png) no-repeat center;
+    // background-size: contain;
+
+    &.on {
+      background: url(./images/footer.png) no-repeat center;
+      background-size: contain;
+    }
   }
 
   .sync {

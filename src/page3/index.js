@@ -21,6 +21,7 @@ const vf = downList[1];
 const floor = downList[2];
 const fs = downList[3];
 const downAuto = document.querySelector('.page3 .down-auto');
+const footer = document.querySelector('.page3 .footer');
 const sync = document.querySelector('.page3 .sync');
 
 function update1(mode) {
@@ -85,7 +86,59 @@ function update3or4(temp, status, node) {
   }
 }
 
-let lastData = null
+function update5(s16) {
+  switch (s16) {
+    case 0:
+      snow.classList.remove('slash');
+      snow.classList.remove('blank');
+      snow.classList.add('A');
+      break;
+    case 1:
+      snow.classList.remove('A');
+      snow.classList.remove('blank');
+      snow.classList.add('slash');
+      break;
+    case 2:
+      snow.classList.remove('slash');
+      snow.classList.remove('A');
+      snow.classList.add('blank');
+      break;
+  }
+}
+
+function update6(dir) {
+  switch (dir) {
+    case '自动循环':
+      circle.classList.remove('inside');
+      circle.classList.remove('outside');
+      circle.classList.add('autoside');
+      break;
+    case '内循环':
+      circle.classList.remove('autoside');
+      circle.classList.remove('outside');
+      circle.classList.add('inside');
+      break;
+    case '外循环':
+      circle.classList.remove('inside');
+      circle.classList.remove('autoside');
+      circle.classList.add('outside');
+      break;
+  }
+}
+
+let curMode = null;
+let curTemp = null;
+let curDir = null;
+let curS11 = null;
+let curS12 = null;
+let curS13 = null;
+let curS14 = null;
+let curS15 = null;
+let curS16 = null;
+let curS17 = null;
+let curS18 = null;
+let curS19 = null;
+let lastData = null;
 
 export function updatePage3(mode, temp, dir, s11, s12, s13, s14, s15, s16, s17, s18, s19) {
   const curData = Array.prototype.slice.call(arguments).toString();
@@ -95,8 +148,26 @@ export function updatePage3(mode, temp, dir, s11, s12, s13, s14, s15, s16, s17, 
     lastData = curData;
   }
 
+  curMode = mode;
+  curTemp = temp;
+  curDir = dir;
+  curS11 = s11;
+  curS12 = s12;
+  curS13 = s13;
+  curS14 = s14;
+  curS15 = s15;
+  curS16 = s16;
+  curS17 = s17;
+  curS18 = s18;
+  curS19 = s19;
+
   update1(mode);
   update2(s11, s12);
   update3or4(temp, s13, leftTemp);
   update3or4(s14, s15, rightTemp);
+  update5(s16);
+  update6(dir);
+  s17 ? auto.classList.add('on') : auto.classList.remove('on');
+  s18 === 1 ? ion.classList.add('on') : ion.classList.remove('on');
+  s19 ? footer.classList.add('on') : footer.classList.remove('on');
 }
