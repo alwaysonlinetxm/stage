@@ -205,6 +205,20 @@
     @include flex(horizontal, center, center);
   }
 
+  .down-auto {
+    display: block;
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    color: #fff;
+    font-size: 30px;
+    transform: translateX(-50%);
+
+    @media screen and (min-width: 1680px) {
+      font-size: 50px;
+    }
+  }
+
   .down-item {
     margin: 0 4%;
 

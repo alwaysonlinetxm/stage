@@ -48,10 +48,47 @@ function updateStatus(index) {
   }
 
   clearInterval(timer);
+  // timer = setInterval(() => {
+  //   Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
+  // }, interval);
+  // Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
+
   timer = setInterval(() => {
-    Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
+    showData({
+      S1: Math.ceil(Math.random() * 9),
+      S2: Math.ceil(100 * Math.random()),
+      S3: 16 + Math.ceil(16 * Math.random()),
+      S4: Math.ceil(Math.random() * 3),
+      S5: -4,
+      S6: 85,
+      S11: Math.floor(Math.random() * 6.99),
+      S12: Math.floor(Math.random() * 2.99),
+      S13: Math.floor(Math.random() * 4.99),
+      S14: 16 + Math.ceil(16 * Math.random()),
+      S15: Math.floor(Math.random() * 4.99),
+      S16: Math.floor(Math.random() * 2.99),
+      S17: Math.floor(Math.random() * 1.99),
+      S18: Math.ceil(Math.random() * 2),
+      S19: Math.floor(Math.random() * 1.99)
+    }, index);
   }, interval);
-  Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
+  showData({
+    S1: Math.ceil(Math.random() * 9),
+    S2: Math.ceil(100 * Math.random()),
+    S3: 16 + Math.ceil(16 * Math.random()),
+    S4: Math.ceil(Math.random() * 3),
+    S5: -4,
+    S6: 85,
+    S11: Math.floor(Math.random() * 6.99),
+    S12: Math.floor(Math.random() * 2.99),
+    S13: Math.floor(Math.random() * 4.99),
+    S14: 16 + Math.ceil(16 * Math.random()),
+    S15: Math.floor(Math.random() * 4.99),
+    S16: Math.floor(Math.random() * 2.99),
+    S17: Math.floor(Math.random() * 1.99),
+    S18: Math.ceil(Math.random() * 2),
+    S19: Math.floor(Math.random() * 1.99)
+  }, index);
 }
 
 let lastData = '';
@@ -78,7 +115,7 @@ function showData(data, index) {
   const s17 = S17 * 1;
   const s18 = S18 * 1;
   const s19 = S19 * 1;
-console.log(index);
+
   switch (index) {
     case 0:
       updatePage1(s1, s3, s2, s4);
@@ -87,18 +124,12 @@ console.log(index);
       updatePage2(s1, s3, s2, s5, s6);
       break;
     case 2:
-      updatePage3(s3, s4, s11, s12, s13, s14, s15, s16, s17, s18, s19);
+      updatePage3(s1, s3, s4, s11, s12, s13, s14, s15, s16, s17, s18, s19);
       break;
   }
 }
 
 updateStatus(curIndex);
-
-// Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res));
-//
-// setInterval(() => {
-//   Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res));
-// }, 10000);
 
 // let mode = Math.ceil(Math.random() * 7);
 // let temp = 16 + Math.ceil(16 * Math.random());
