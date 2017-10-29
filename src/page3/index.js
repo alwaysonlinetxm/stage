@@ -14,6 +14,7 @@ const rightTemp = document.querySelector('.page3 .right-temp .temp');
 const minus = document.querySelector('.page3 .minus');
 const plus = document.querySelector('.page3 .plus');
 const sum = document.querySelector('.page3 .sum');
+const sumAuto = document.querySelector('.page3 .sum-auto');
 const downList = document.querySelectorAll('.page3 .down-item');
 const vent = downList[0];
 const vf = downList[1];
@@ -22,16 +23,7 @@ const fs = downList[3];
 const downAuto = document.querySelector('.page3 .down-auto');
 const sync = document.querySelector('.page3 .sync');
 
-let lastData = null
-
-export function updatePage3(mode, temp, dir, s11, s12, s14, s15, s16, s17, s18, s19) {
-  const curData = Array.prototype.slice.call(arguments).toString();
-  if (curData === lastData) {
-    return;
-  } else {
-    lastData = curData;
-  }
-
+function update1(mode) {
   downList.forEach(node => node.classList.remove('on'));
   downAuto.style.display = 'none';
   switch (mode) {
@@ -56,5 +48,36 @@ export function updatePage3(mode, temp, dir, s11, s12, s14, s15, s16, s17, s18, 
       downAuto.style.display = 'block';
       break;
   }
+}
 
+function update2(s11, s12) {
+  switch (s12) {
+    case 0:
+      sum.style.display = 'none';
+      sumAuto.style.display = 'none'
+      break;
+    case 1:
+      sum.style.display = 'none';
+      sumAuto.style.display = 'block'
+      break;
+    case 2:
+      sum.style.display = 'block';
+      sumAuto.style.display = 'none'
+      sum.style.width = `${s11 / 6 * 100}%`;
+      break;
+  }
+}
+
+let lastData = null
+
+export function updatePage3(mode, temp, dir, s11, s12, s14, s15, s16, s17, s18, s19) {
+  const curData = Array.prototype.slice.call(arguments).toString();
+  if (curData === lastData) {
+    return;
+  } else {
+    lastData = curData;
+  }
+
+  update1(mode);
+  update2(s11, s12)
 }
