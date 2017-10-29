@@ -142,7 +142,7 @@
       font-size: 160px;
     }
 
-    &:after {
+    &.normal:after {
       content: '';
       position: absolute;
       top: 8%;

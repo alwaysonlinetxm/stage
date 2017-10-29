@@ -68,9 +68,26 @@ function update2(s11, s12) {
   }
 }
 
+function update3or4(temp, status, node) {
+  switch (status) {
+    case 1:
+      node.classList.add('normal');
+      node.innerHTML = temp;
+      break;
+    case 2:
+      node.classList.remove('normal');
+      node.innerHTML = 'Lo';
+      break;
+    case 3:
+      node.classList.remove('normal');
+      node.innerHTML = 'Hi';
+      break;
+  }
+}
+
 let lastData = null
 
-export function updatePage3(mode, temp, dir, s11, s12, s14, s15, s16, s17, s18, s19) {
+export function updatePage3(mode, temp, dir, s11, s12, s13, s14, s15, s16, s17, s18, s19) {
   const curData = Array.prototype.slice.call(arguments).toString();
   if (curData === lastData) {
     return;
@@ -79,5 +96,7 @@ export function updatePage3(mode, temp, dir, s11, s12, s14, s15, s16, s17, s18, 
   }
 
   update1(mode);
-  update2(s11, s12)
+  update2(s11, s12);
+  update3or4(temp, s13, leftTemp);
+  update3or4(s14, s15, rightTemp);
 }
