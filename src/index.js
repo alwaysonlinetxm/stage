@@ -48,47 +48,47 @@ function updateStatus(index) {
   }
 
   clearInterval(timer);
-  // timer = setInterval(() => {
-  //   Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
-  // }, interval);
-  // Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
-
   timer = setInterval(() => {
-    showData({
-      S1: Math.ceil(Math.random() * 9),
-      S2: Math.ceil(100 * Math.random()),
-      S3: 16 + Math.ceil(16 * Math.random()),
-      S4: Math.ceil(Math.random() * 3) + '',
-      S5: -4,
-      S6: 85,
-      S11: Math.floor(Math.random() * 6.99),
-      S12: Math.floor(Math.random() * 2.99),
-      S13: Math.floor(Math.random() * 4.99),
-      S14: 16 + Math.ceil(16 * Math.random()),
-      S15: Math.floor(Math.random() * 4.99),
-      S16: Math.floor(Math.random() * 2.99),
-      S17: Math.floor(Math.random() * 1.99),
-      S18: Math.ceil(Math.random() * 2),
-      S19: Math.floor(Math.random() * 1.99)
-    }, index);
+    Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
   }, interval);
-  showData({
-    S1: Math.ceil(Math.random() * 9),
-    S2: Math.ceil(100 * Math.random()),
-    S3: 16 + Math.ceil(16 * Math.random()),
-    S4: Math.ceil(Math.random() * 3) + '',
-    S5: -4,
-    S6: 85,
-    S11: Math.floor(Math.random() * 6.99),
-    S12: Math.floor(Math.random() * 2.99),
-    S13: Math.floor(Math.random() * 4.99),
-    S14: 16 + Math.ceil(16 * Math.random()),
-    S15: Math.floor(Math.random() * 4.99),
-    S16: Math.floor(Math.random() * 2.99),
-    S17: Math.floor(Math.random() * 1.99),
-    S18: Math.ceil(Math.random() * 2),
-    S19: Math.floor(Math.random() * 1.99)
-  }, index);
+  Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
+
+  // timer = setInterval(() => {
+  //   showData({
+  //     S1: Math.ceil(Math.random() * 9),
+  //     S2: Math.ceil(100 * Math.random()),
+  //     S3: 16 + Math.ceil(16 * Math.random()),
+  //     S4: Math.ceil(Math.random() * 3) + '',
+  //     S5: -4,
+  //     S6: 85,
+  //     S11: Math.floor(Math.random() * 6.99),
+  //     S12: Math.floor(Math.random() * 2.99),
+  //     S13: Math.floor(Math.random() * 4.99),
+  //     S14: 16 + Math.ceil(16 * Math.random()),
+  //     S15: Math.floor(Math.random() * 4.99),
+  //     S16: Math.floor(Math.random() * 2.99),
+  //     S17: Math.floor(Math.random() * 1.99),
+  //     S18: Math.ceil(Math.random() * 2),
+  //     S19: Math.floor(Math.random() * 1.99)
+  //   }, index);
+  // }, interval);
+  // showData({
+  //   S1: Math.ceil(Math.random() * 9),
+  //   S2: Math.ceil(100 * Math.random()),
+  //   S3: 16 + Math.ceil(16 * Math.random()),
+  //   S4: Math.ceil(Math.random() * 3) + '',
+  //   S5: -4,
+  //   S6: 85,
+  //   S11: Math.floor(Math.random() * 6.99),
+  //   S12: Math.floor(Math.random() * 2.99),
+  //   S13: Math.floor(Math.random() * 4.99),
+  //   S14: 16 + Math.ceil(16 * Math.random()),
+  //   S15: Math.floor(Math.random() * 4.99),
+  //   S16: Math.floor(Math.random() * 2.99),
+  //   S17: Math.floor(Math.random() * 1.99),
+  //   S18: Math.ceil(Math.random() * 2),
+  //   S19: Math.floor(Math.random() * 1.99)
+  // }, index);
 }
 
 let lastData = '';
