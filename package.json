@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "webpack -w",
-    "dev": "webpack-dev-server --hot"
+    "dev": "webpack-dev-server"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",

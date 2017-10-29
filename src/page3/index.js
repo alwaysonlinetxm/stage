@@ -21,6 +21,13 @@ const floor = downList[2];
 const shield = downList[3];
 const sync = document.querySelector('.page3 .sync');
 
-export function updatePage3(mode, temp, sum, dir) {
+let lastData = null
 
+export function updatePage3(temp, dir, s11, s12, s14, s15, s16, s17, s18, s19) {
+  const curData = Array.prototype.slice.call(arguments).toString();
+  if (curData === lastData) {
+    return;
+  } else {
+    lastData = curData;
+  }
 }

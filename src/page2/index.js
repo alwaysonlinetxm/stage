@@ -198,10 +198,18 @@ function updateArrows7(temp, sum) {
   }
 }
 
+let lastData = null;
+
 export function updatePage2(mode, temp, sum, blue, red) {
+  const curData = Array.prototype.slice.call(arguments).toString();
+  if (curData === lastData) {
+    return;
+  } else {
+    lastData = curData;
+  }
+
   blueNum.innerHTML = `${blue}℃`;
   redNum.innerHTML = `${red}℃`;
-
 
   if (mode === 1 || mode === 2 || mode === 3 || mode === 7 || mode === 8) {
     doors[0].style.webkitTransform = 'rotate(-60deg)';

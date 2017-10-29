@@ -97,7 +97,16 @@ function setArrow(temp) {
   });
 }
 
+let lastData = null;
+
 export function updatePage1(mode, temp, sum, dir) {
+  const curData = Array.prototype.slice.call(arguments).toString();
+  if (curData === lastData) {
+    return;
+  } else {
+    lastData = curData;
+  }
+
   const intTemp = Math.ceil(temp) - 16;
 
   setArrow(temp);
