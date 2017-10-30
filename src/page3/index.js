@@ -1,5 +1,7 @@
 import './index.scss';
 
+import Util from '../libs/util';
+
 const topList = document.querySelectorAll('.page3 .top-item');
 const snow = topList[0];
 const circle = topList[1];
@@ -126,18 +128,36 @@ function update6(dir) {
   }
 }
 
-let curMode = null;
-let curTemp = null;
-let curDir = null;
-let curS11 = null;
-let curS12 = null;
-let curS13 = null;
-let curS14 = null;
-let curS15 = null;
-let curS16 = null;
-let curS17 = null;
-let curS18 = null;
-let curS19 = null;
+function upload(e) {
+  const num = e.target.getAttribute('data-num') * 1;
+  let str = '';
+
+  for (let i = 1; i <= 15; i++) {
+    if (i === num) {
+      str += `T${i}=1&`;
+    } else {
+      str += `T${i}=0&`;
+    }
+  }
+  str = str.slice(0, -1);
+}
+
+vent.addEventListener('click', upload);
+vf.addEventListener('click', upload);
+floor.addEventListener('click', upload);
+fs.addEventListener('click', upload);
+minus.addEventListener('click', upload);
+plus.addEventListener('click', upload);
+leftUp.addEventListener('click', upload);
+leftDown.addEventListener('click', upload);
+rightUp.addEventListener('click', upload);
+rightDown.addEventListener('click', upload);
+snow.addEventListener('click', upload);
+circle.addEventListener('click', upload);
+auto.addEventListener('click', upload);
+ion.addEventListener('click', upload);
+sync.addEventListener('click', upload);
+
 let lastData = null;
 
 export function updatePage3(mode, temp, dir, s11, s12, s13, s14, s15, s16, s17, s18, s19) {
@@ -147,19 +167,6 @@ export function updatePage3(mode, temp, dir, s11, s12, s13, s14, s15, s16, s17, 
   } else {
     lastData = curData;
   }
-
-  curMode = mode;
-  curTemp = temp;
-  curDir = dir;
-  curS11 = s11;
-  curS12 = s12;
-  curS13 = s13;
-  curS14 = s14;
-  curS15 = s15;
-  curS16 = s16;
-  curS17 = s17;
-  curS18 = s18;
-  curS19 = s19;
 
   update1(mode);
   update2(s11, s12);
