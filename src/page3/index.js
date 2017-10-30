@@ -140,6 +140,8 @@ function upload(e) {
     }
   }
   str = str.slice(0, -1);
+
+  Util.request(str).then(res => console.log('-----', res));
 }
 
 vent.addEventListener('click', upload);
