@@ -40,7 +40,7 @@ function updateStatus(index) {
   switch (index) {
     case 0:
     case 1:
-      interval = 10000;
+      interval = 3000;
       break;
     case 2:
       interval = 1000;
@@ -100,10 +100,11 @@ let lastData = '';
 // S6：水温；
 function showData(data, index) {
   const { S1, S2, S3, S4, S5, S6, S11, S12, S13, S14, S15, S16, S17, S18, S19 } = data;
+
   const s1 = S1 * 1;
   const s2 = Math.ceil(S2 * 1);
   const s3 = S3 * 1;
-  const s4 = S4 === '1' ? '自动循环' : S4 === '2' ? '内循环' : '外循环';
+  const s4 = S4 === '1' ? '自动循环' : S4 === '2' ? '外循环' : '内循环';
   const s5 = S5 * 1;
   const s6 = S6 * 1;
   const s11 = S11 * 1;
