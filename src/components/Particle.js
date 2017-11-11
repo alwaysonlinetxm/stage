@@ -88,8 +88,8 @@ export default class Particle {
     const { startX, endX, startY1, startY2, dir, color, w, dis } = this;
     const particle = new PIXI.Graphics();
 
-    particle.lineStyle(0);
-    particle.beginFill(color, 0.5);
+    particle.lineStyle(0.3, 0xFFFFFF, 0.2);
+    particle.beginFill(color, 0.9);
     particle.drawCircle(0, 0, this.radius);
     particle.endFill();
     // custom attr
