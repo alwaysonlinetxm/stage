@@ -4,7 +4,7 @@ export default {
 
 	request(api, method, data = {}) {
 		// const url = `https://api.joy-homeplus.com/v1/management/${api}`;
-		const url = `http://101.132.131.107/cgi-bin/txtCGI?Name=ECC&${api}`;
+		const url = `cgi-bin/txtCGI?Name=ECC&${api}`;
 		const opt = {
 			headers: {
 				'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
