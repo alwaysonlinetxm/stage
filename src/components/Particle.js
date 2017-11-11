@@ -12,7 +12,8 @@ export default class Particle {
     this.color = opt.color;
     this.k = opt.k;
     this.w = opt.w;
-    this.radius = 1.5;
+    this.radius = 2;
+    this.dis = opt.dis || 1.5;
     this.dir = this.startX > this.endX ? -1 : 1;
     this.x1 = this.startX + (this.endX - this.startX) * 0.3;
     this.x2 = this.startX + (this.endX - this.startX) * 0.6;
@@ -84,7 +85,7 @@ export default class Particle {
   }
 
   _createParticle() {
-    const { startX, endX, startY1, startY2, dir, color, w } = this;
+    const { startX, endX, startY1, startY2, dir, color, w, dis } = this;
     const particle = new PIXI.Graphics();
 
     particle.lineStyle(0);
@@ -92,7 +93,7 @@ export default class Particle {
     particle.drawCircle(0, 0, this.radius);
     particle.endFill();
     // custom attr
-    particle.dis = dir * (1.8 + Math.random() * 0.3);
+    particle.dis = dir * (dis + Math.random() * 0.3);
     // particle.dis = dir * 1.5;
     particle.startY = startY1 + (Math.random() * (startY2 - startY1));
     particle.w = 1 + w * Math.random();

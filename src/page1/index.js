@@ -38,8 +38,8 @@ const particle1 = new Particle({
 });
 
 particle1.particles.rotation = Math.PI * -0.2;
-particle1.particles.x = CLIENT_WIDTH * 0.35;
-particle1.particles.y = CLIENT_HEIGHT * 0.4;
+particle1.particles.x = CLIENT_WIDTH * 0.37;
+particle1.particles.y = CLIENT_HEIGHT * 0.44;
 app.stage.addChild(particle1.particles);
 
 const particle2= new Particle({
@@ -57,17 +57,18 @@ particle2.particles.y = CLIENT_HEIGHT * 0.22;
 app.stage.addChild(particle2.particles);
 
 const particle3= new Particle({
-  width: CLIENT_WIDTH * 0.24,
+  width: CLIENT_WIDTH * 0.25,
   height: 50,
-  k: 1,
-  w: 100,
+  k: 5,
+  w: 500,
   sum: 0,
+  dis: 1.2,
   color: 0xEDE780
 });
 
 particle3.particles.rotation = Math.PI * -0.65;
-particle3.particles.x = CLIENT_WIDTH * 0.63;
-particle3.particles.y = CLIENT_HEIGHT * 0.25;
+particle3.particles.x = CLIENT_WIDTH * 0.6;
+particle3.particles.y = CLIENT_HEIGHT * 0.3;
 app.stage.addChild(particle3.particles);
 
 app.ticker.add(function() {
@@ -113,15 +114,15 @@ export function updatePage1(mode, temp, sum, dir) {
   // floor
   particle1.particles.visible = mode === 1 || mode === 2 || mode === 3 || mode === 7 || mode === 8;
   particle1.setColor(COLORS[intTemp], 1);
-  particle1.setSum(sum * 10, 5);
+  particle1.setSum(Math.pow(sum, 1.3), 1000 / sum);
   // vent
   particle2.particles.visible = mode === 1 || mode === 3 || mode === 4 || mode === 5 || mode === 8;
   particle2.setColor(COLORS[intTemp], 1);
-  particle2.setSum(sum * 20, 5);
+  particle2.setSum(Math.pow(sum, 1.5), 1000 / sum);
   // shield
   particle3.particles.visible = mode === 5 || mode === 6 || mode === 7 || mode === 8 || mode === 9;
   particle3.setColor(COLORS[intTemp], 1);
-  particle3.setSum(sum * 16, 5);
+  particle3.setSum(Math.pow(sum, 1.6), 1000 / sum);
   tempDom.innerHTML = `车内温度：${temp}℃`;
   sumDom.innerHTML = `当前风量：${sum}%`;
   dirDom.innerHTML = `进风方式：${dir}`;
