@@ -50,7 +50,7 @@ function updateArrows2(sum) {
     polygon.style.left = `${i / 2 * 3}%`;
 
     polygon.innerHTML = `
-      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:#e4574e">
+      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:#8E1925">
         <animateMotion path="M140,280 q-190,-80 -110,-240" begin="0s" dur="3s" rotate="auto" repeatCount="indefinite"/>
         <animate attributeName="opacity" begin="0s" dur="3s" values="0;1;1;1;0" repeatCount="indefinite" />
       </polygon>
@@ -77,7 +77,7 @@ function updateArrows3(sum) {
     polygon.style.left = `${i * 1}%`;
 
     polygon.innerHTML = `
-      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:#2f75fb">
+      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:#061e81">
         <animateMotion path="M100,90 q-100,-40 -90,-80" begin="0s" dur="1.5s" rotate="auto" repeatCount="indefinite"/>
         <animate attributeName="opacity" begin="0s" dur="1.5s" values="0;1;1;0" repeatCount="indefinite" />
       </polygon>
@@ -104,7 +104,7 @@ function updateArrows4(sum) {
     polygon.style.left = `${i * 1}%`;
 
     polygon.innerHTML = `
-      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:#2f75fb">
+      <polygon points="20,5 14,0 14,2 0,2 0,7 14,7 14,9" style="fill:#061e81">
         <animateMotion path="M100,20 q-105,20 -90,80" begin="0s" dur="1.5s" rotate="auto" repeatCount="indefinite"/>
         <animate attributeName="opacity" begin="0s" dur="1.5s" values="0;1;1;0" repeatCount="indefinite" />
       </polygon>
