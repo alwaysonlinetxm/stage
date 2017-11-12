@@ -6,7 +6,7 @@ import Util from './libs/util';
 import { updatePage1 } from './page1/index';
 import { updatePage2 } from './page2/index';
 import { updatePage3 } from './page3/index';
-
+import { updatePage4 } from './page4/index';
 
 const CLIENT_WIDTH = window.innerWidth;
 const box = document.querySelector('.box');
@@ -40,6 +40,7 @@ function updateStatus(index) {
   switch (index) {
     case 0:
     case 1:
+    case 3:
       interval = 3000;
       break;
     case 2:
@@ -49,9 +50,9 @@ function updateStatus(index) {
 
   clearInterval(timer);
   timer = setInterval(() => {
-    Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
+    Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S7=&S8=&S9=&S10=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
   }, interval);
-  Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
+  Util.request('S1=&S2=&S3=&S4=&S5=&S6=&S7=&S8=&S9=&S10=&S11=&S12=&S13=&S14=&S15=&S16=&S17=&S18=&S19=').then(res => showData(res, index));
 
   // timer = setInterval(() => {
   //   showData({
@@ -61,6 +62,10 @@ function updateStatus(index) {
   //     S4: Math.ceil(Math.random() * 3) + '',
   //     S5: -4,
   //     S6: 85,
+  //     S7: Math.floor(Math.random() * 2.99),
+  //     S8: Math.floor(Math.random() * 240.99),
+  //     S9: Math.floor(Math.random() * 8000.99),
+  //     S10: Math.floor(Math.random() * 125.99) - 40,
   //     S11: Math.floor(Math.random() * 6.99),
   //     S12: Math.floor(Math.random() * 2.99),
   //     S13: Math.floor(Math.random() * 4.99),
@@ -79,6 +84,10 @@ function updateStatus(index) {
   //   S4: Math.ceil(Math.random() * 3) + '',
   //   S5: -4,
   //   S6: 85,
+  //   S7: Math.floor(Math.random() * 2.99),
+  //   S8: Math.floor(Math.random() * 240.99),
+  //   S9: Math.floor(Math.random() * 8000.99),
+  //   S10: Math.floor(Math.random() * 125.99) - 40,
   //   S11: Math.floor(Math.random() * 6.99),
   //   S12: Math.floor(Math.random() * 2.99),
   //   S13: Math.floor(Math.random() * 4.99),
@@ -99,7 +108,7 @@ let lastData = '';
 // S5：蒸发器温度；
 // S6：水温；
 function showData(data, index) {
-  const { S1, S2, S3, S4, S5, S6, S11, S12, S13, S14, S15, S16, S17, S18, S19 } = data;
+  const { S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17, S18, S19 } = data;
 
   const s1 = S1 * 1;
   const s2 = Math.ceil(S2 * 1);
@@ -107,6 +116,10 @@ function showData(data, index) {
   const s4 = S4 === '1' ? '自动循环' : S4 === '2' ? '外循环' : '内循环';
   const s5 = S5 * 1;
   const s6 = S6 * 1;
+  const s7 = S7 * 1;
+  const s8 = S8 * 1;
+  const s9 = S9 * 1;
+  const s10 = S10 * 1;
   const s11 = S11 * 1;
   const s12 = S12 * 1;
   const s13 = S13 * 1;
@@ -126,6 +139,9 @@ function showData(data, index) {
       break;
     case 2:
       updatePage3(s1, s3, s4, s11, s12, s13, s14, s15, s16, s17, s18, s19);
+      break;
+    case 3:
+      updatePage4(s7, s8, s9, s10);
       break;
   }
 }

@@ -1,0 +1,32 @@
+@import '../libs/common.scss';
+
+.page4 {
+  .container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-bottom: 56.25%;
+    background: url(./images/bg.jpg) no-repeat center;
+    background-size: contain;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 34%;
+    width: 19px;
+    height: 133px;
+    background: url(./images/arrow.png) no-repeat;
+    background-size: 19px 133px;
+    transform: rotate(-180deg);
+    transform-origin: 50% 95%;
+    transition: all linear 0.5s;
+
+    &.a1 {
+      left: 20%;
+    }
+
+    &.a2 {
+      left: 79%;
+    }
+  }
+}
