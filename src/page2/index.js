@@ -219,6 +219,17 @@ export function updatePage2(mode, temp, sum, blue, red) {
 
   doors[3].style.webkitTransform = `rotate(${45 - ((temp - 16) / 16) * 70}deg)`;
 
+  if (temp === 16) {
+    arrows4.style.display = 'none';
+  } else {
+    arrows4.style.display = 'block';
+  }
+  if (temp === 32) {
+    arrows3.style.display = 'none';
+  } else {
+    arrows3.style.display = 'block';
+  }
+
   const intTemp = Math.ceil(temp) - 16;
 
   updateArrows1(sum);
