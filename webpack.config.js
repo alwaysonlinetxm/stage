@@ -3,6 +3,7 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = function makeWebpackConfig(env) {
   const distPath = path.join(__dirname, 'docs');
@@ -68,7 +69,15 @@ module.exports = function makeWebpackConfig(env) {
 					collapseWhitespace: true,
 					removeComments: true
 				}
-			})
+			}),
+      new CopyWebpackPlugin([{
+        toType: 'file',
+        from: {
+          glob: './img/*',
+          dot: true
+        },
+        to: distPath + '/images'
+      }])
 	  ]
 	};
 }
