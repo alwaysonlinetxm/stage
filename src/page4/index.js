@@ -7,18 +7,20 @@ const a1 = document.querySelector('.page4 .a1');
 const a2 = document.querySelector('.page4 .a2');
 const canvas = document.querySelector('.page4 .canvas');
 const ctx = canvas.getContext('2d');
+let width;
+let height
 
 if (CLIENT_WIDTH / CLIENT_HEIGHT > 0.5625) {
-  canvas.width = CLIENT_HEIGHT / 0.5625;
-  canvas.height = CLIENT_HEIGHT;
+  width = canvas.width = CLIENT_HEIGHT / 0.5625;
+  height = canvas.height = CLIENT_HEIGHT;
 } else {
-  canvas.width = CLIENT_WIDTH;
-  canvas.height = CLIENT_WIDTH * 0.5625;
+  width = canvas.width = CLIENT_WIDTH;
+  height = canvas.height = CLIENT_WIDTH * 0.5625;
 }
 
 const bg = new Image();
 bg.onload = () => {
-  ctx.drawImage(bg, 0, 0);
+  ctx.drawImage(bg, 0, 0, 1284, 724, 0, 0, width, height);
 }
 bg.src = './images/img/p4_bg.jpg';
 

@@ -1,36 +1,12 @@
 @import '../libs/common.scss';
 
 .page4 {
-  .container {
-    position: relative;
-    height: 100%;
-  }
+  position: relative;
 
-  .canvas {
-    display: block;
-    position: relative;
+  .container {
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-
-  .arrow {
-    position: absolute;
-    top: 34%;
-    width: 19px;
-    height: 133px;
-    background: url(./images/arrow.png) no-repeat;
-    background-size: 19px 133px;
-    transform: rotate(-180deg);
-    transform-origin: 50% 95%;
-    transition: all linear 0.5s;
-
-    &.a1 {
-      left: 20%;
-    }
-
-    &.a2 {
-      left: 79%;
-    }
   }
 }
