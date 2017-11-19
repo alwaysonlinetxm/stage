@@ -3,12 +3,16 @@ import './index.scss';
 const CLIENT_WIDTH = window.innerWidth;
 const CLIENT_HEIGHT = window.innerHeight;
 
-const a1 = document.querySelector('.page4 .a1');
-const a2 = document.querySelector('.page4 .a2');
+const temp = document.querySelector('.page4 .temp-value');
+const keyList = document.querySelectorAll('.page4 .key-item');
+const date = document.querySelector('.page4 .date');
 const canvas = document.querySelector('.page4 .canvas');
 const ctx = canvas.getContext('2d');
 let width;
 let height
+let timer = null;
+
+const MONTH = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DES'];
 
 if (CLIENT_WIDTH / CLIENT_HEIGHT > 0.5625) {
   width = canvas.width = CLIENT_HEIGHT / 0.5625;
@@ -20,13 +24,19 @@ if (CLIENT_WIDTH / CLIENT_HEIGHT > 0.5625) {
 
 const bg = new Image();
 bg.onload = () => {
-  ctx.drawImage(bg, 0, 0, 1284, 724, 0, 0, width, height);
+  ctx.drawImage(bg, 0, 0, 1920, 1080, 0, 0, width, height);
 }
 bg.src = './images/img/p4_bg.jpg';
 
-
-
-console.log('-----',CLIENT_WIDTH, CLIENT_HEIGHT,  canvas.width, canvas.height)
+function updateDate() {
+  const today = new Date;
+  const h = today.getHours();
+  let m = today.getMinutes();
+  if (m < 10) {
+    m = `0{m}`;
+  }
+  return `${MONTH[today.getMonth()]}. ${today.getDate()} ${h > 12 ? h - 12 : h}:${m} ${h > 12 ? 'PM' : 'AM'}`;
+}
 
 let lastData = null;
 
@@ -38,6 +48,19 @@ export function updatePage4(s7, s8, s9, s10) {
     lastData = curData;
   }
 
-  // a1.style.webkitTransform = `rotate(${-180 + s8 / 220 * 360}deg)`;
-  // a2.style.webkitTransform = `rotate(${-180 + s9 / 8000 * 360}deg)`;
+  if (!timer) {
+    date.innerHTML = updateDate();
+    timer = setInterval(() => {
+      date.innerHTML = updateDate();
+    }, 60000);
+  }
+
+  temp.innerHTML = `${s10}℃`;
+  keyList.forEach((node, i) => {
+    if (i === s7) {
+      node.classList.add('on');
+    } else {
+      node.classList.remove('on');
+    }
+  })
 }
