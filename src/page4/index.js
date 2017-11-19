@@ -6,6 +6,12 @@ const CLIENT_HEIGHT = window.innerHeight;
 const temp = document.querySelector('.page4 .temp-value');
 const keyList = document.querySelectorAll('.page4 .key-item');
 const date = document.querySelector('.page4 .date');
+const leftNum = document.querySelector('.page4 .left .num');
+const rightNum = document.querySelector('.page4 .right .num');
+const leftBox = document.querySelector('.page4 .left.radar-box');
+const rightBox = document.querySelector('.page4 .right.radar-box');
+const leftRadar = document.querySelector('.page4 .left .radar');
+const rightRadar = document.querySelector('.page4 .right .radar');
 const canvas = document.querySelector('.page4 .canvas');
 const ctx = canvas.getContext('2d');
 let width;
@@ -30,12 +36,35 @@ bg.src = './images/img/p4_bg.jpg';
 
 function updateDate() {
   const today = new Date;
-  const h = today.getHours();
+  let h = today.getHours();
   let m = today.getMinutes();
-  if (m < 10) {
-    m = `0{m}`;
-  }
-  return `${MONTH[today.getMonth()]}. ${today.getDate()} ${h > 12 ? h - 12 : h}:${m} ${h > 12 ? 'PM' : 'AM'}`;
+  const pm = h > 12;
+  h = pm ? h - 12 : h;
+  h = h < 10 ? `0${h}` : h;
+  m = m < 10 ? `0${m}` : m;
+  return `${MONTH[today.getMonth()]}. ${today.getDate()} ${h}:${m} ${pm ? 'PM' : 'AM'}`;
+}
+
+function updateNum(left, end) {
+  const dom = left ? leftNum : rightNum;
+  const dis = left ? 3 : 1;
+  let start = left ? leftNum.innerHTML * 1 : rightNum * 1;
+  const dir = end > start;
+  const d = (dir ? 1 : -1) * dis;
+
+  (function count() {
+    const _start = start + d;
+    if (dir && _start < end || !dir && _start > end) {
+      dom.innerHTML = start = _start;
+      window.requestAnimationFrame(count);
+    } else {
+      dom.innerHTML = end;
+    }
+  })();
+}
+
+function countRadarLeft(n) {
+  // (240 - n) / 240 * 360
 }
 
 let lastData = null;
@@ -63,4 +92,24 @@ export function updatePage4(s7, s8, s9, s10) {
       node.classList.remove('on');
     }
   })
+
+  updateNum(true, s8);
+  updateNum(false, Math.floor(s9 / 1000));
+
+  leftBox.style.overflow = s8 < 60 ? 'hidden' : 'visible';
+  rightBox.style.overflow = s9 < 3000 ? 'hidden' : 'visible';
+
+  let angle1 = s8 / 240 * 360;
+  let angle2 = s9 / 8000 * 240;
+
+  if (angle1 === 0) {
+    angle1 = 1;
+  }
+
+  if (angle2 === 0) {
+    angle2 = 1;
+  }
+
+  leftRadar.style.webkitTransform = `rotate(${angle1}deg)`;
+  rightRadar.style.webkitTransform = `rotate(${angle2}deg)`;
 }

@@ -8,6 +8,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 0%;
   }
 
   .slist {
@@ -69,10 +70,70 @@
 
   .date {
     position: absolute;
-    top: 18%;
+    top: 18.3%;
     left: 50%;
     transform: translateX(-50%);
     color: rgba(255, 255, 255, 0.5);
     font-size: 32px;
+  }
+
+  .circle {
+    position: absolute;
+    top: 37%;
+    width: 16.875%;
+    padding-bottom: 16.875%;
+    background: url(./images/circle.png) no-repeat center;
+    background-size: contain;
+
+    &.left {
+      left: 12%;
+    }
+
+    &.right {
+      right: 11.77%;
+    }
+  }
+
+  .num {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    color: #fff;
+    font-size: 145px;
+    transform: translateX(-50%);
+  }
+
+  .unit {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    color: rgba(255, 255, 255, 0.6);;
+    font-size: 32px;
+    transform: translateX(-50%);
+  }
+
+  .radar-box {
+    position: absolute;
+    top: 26.8%;
+    width: 14.062%;
+    padding-bottom: 28.125%;
+
+
+    .radar {
+      width: 200%;
+      padding-bottom: 200%;
+      background: url(./images/radar.png) no-repeat center;
+      background-size: contain;
+      opacity: 0.7;
+      transition: all linear 0.5s;
+    }
+
+    &.left {
+      left: 6.1%;
+    }
+
+    &.right {
+      right: 20%;
+    }
   }
 }

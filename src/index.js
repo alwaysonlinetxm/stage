@@ -146,6 +146,6 @@ function showData(data, index) {
   }
 }
 
-window.update = updatePage3
+window.update = updatePage4
 
 updateStatus(curIndex);
