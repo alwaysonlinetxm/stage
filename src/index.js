@@ -16,18 +16,73 @@ const title = document.querySelector('.title');
 let timer = null;
 let interval = -1;
 let curIndex = 0;
+let startX = 0;
+let startY = 0;
+let lastD = 0;
+let curX = CLIENT_WIDTH * curIndex;
 
-back.addEventListener('click', () => {
+function onTouchStart(e) {
+  startX = e.changedTouches[0].pageX;
+  startY = e.changedTouches[0].pageY;
+}
+
+function onTouchMove(e) {
+  const dx = e.changedTouches[0].pageX - startX;
+  const dy = e.changedTouches[0].pageY - startY;
+
+  Math.abs(dx) > Math.abs(dy) && e.preventDefault()
+  move(dx);
+}
+
+function onTouchEnd(e) {
+  const dx = e.changedTouches[0].pageX - startX;
+  if (Math.abs(dx) < 100) {
+    box.style.webkitTransform = `translateX(-${curIndex * CLIENT_WIDTH}px)`;
+  } else {
+    dx > 0 ? slideLeft() : slideRight();
+  }
+}
+
+function move(d) {
+  if (lastD === 0) {
+    lastD = d;
+  } else {
+    if (Math.abs(d - lastD) > 40) {
+      lastD = d;
+    } else {
+      return;
+    }
+  }
+  box.style.webkitTransform = `translateX(${curX + d}px)`;
+}
+
+function slideLeft() {
   if (curIndex > 0) {
     updateStatus(--curIndex);
+  } else {
+    slide(curIndex);
   }
-}, false);
+}
 
-forward.addEventListener('click', () => {
+function slideRight() {
   if (curIndex < 3) {
     updateStatus(++curIndex);
+  } else {
+    slide(curIndex);
   }
-}, false);
+}
+
+function slide(n) {
+  curX = -n * CLIENT_WIDTH;
+  box.style.webkitTransform = `translateX(${curX}px)`;
+}
+
+back.addEventListener('click', slideLeft, false);
+forward.addEventListener('click', slideRight, false);
+document.body.addEventListener('touchstart', onTouchStart, false);
+document.body.addEventListener('touchmove', onTouchMove, false);
+document.body.addEventListener('touchend', onTouchEnd, false);
+document.body.addEventListener('touchcancel', onTouchEnd, false);
 
 function updateStatus(index) {
   if (index === 0 || index === 1) {
@@ -35,7 +90,7 @@ function updateStatus(index) {
   } else {
     title.style.display = 'none';
   }
-  box.style.webkitTransform = `translateX(-${curIndex * CLIENT_WIDTH}px)`;
+  slide(index);
 
   switch (index) {
     case 0:
