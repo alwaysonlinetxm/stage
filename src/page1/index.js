@@ -53,7 +53,7 @@ const particle2= new Particle({
 
 particle2.particles.rotation = Math.PI * 0.15;
 particle2.particles.x = CLIENT_WIDTH * 0.5;
-particle2.particles.y = CLIENT_HEIGHT * 0.22;
+particle2.particles.y = CLIENT_HEIGHT * 0.25;
 app.stage.addChild(particle2.particles);
 
 const particle3= new Particle({
