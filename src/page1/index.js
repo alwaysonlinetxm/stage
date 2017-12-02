@@ -38,8 +38,8 @@ const particle1 = new Particle({
 });
 
 particle1.particles.rotation = Math.PI * -0.2;
-particle1.particles.x = CLIENT_WIDTH * 0.37;
-particle1.particles.y = CLIENT_HEIGHT * 0.44;
+particle1.particles.x = CLIENT_WIDTH * 0.34;
+particle1.particles.y = CLIENT_HEIGHT * 0.47;
 app.stage.addChild(particle1.particles);
 
 const particle2= new Particle({
