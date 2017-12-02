@@ -59,14 +59,14 @@ app.stage.addChild(particle2.particles);
 const particle3= new Particle({
   width: CLIENT_WIDTH * 0.25,
   height: 50,
-  k: 5,
+  k: 1,
   w: 500,
   sum: 0,
   dis: 1.2,
   color: 0xEDE780
 });
 
-particle3.particles.rotation = Math.PI * -0.65;
+particle3.particles.rotation = Math.PI * -0.75;
 particle3.particles.x = CLIENT_WIDTH * 0.6;
 particle3.particles.y = CLIENT_HEIGHT * 0.3;
 app.stage.addChild(particle3.particles);
